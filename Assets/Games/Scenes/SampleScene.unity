@@ -165,11 +165,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c5eb4b0f588cb74c9c5ed4564faa23b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  height: 3
-  width: 3
+  height: 10
+  width: 10
   depth: 0
   offset: 0
   pointZero: {fileID: 1789874700}
+  groundParent: {fileID: 198656274}
   ground: {fileID: 9188191569707869362, guid: 035ef9aecc7f90e4b93b20c7cbf4af69, type: 3}
 --- !u!1 &83096734
 GameObject:
@@ -319,13 +320,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 330585543}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: -10}
+  m_LocalRotation: {x: 0.3485405, y: 0.339814, z: -0.13729374, w: 0.8626682}
+  m_LocalPosition: {x: -4.3, y: 14, z: -4.3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 44, y: 43, z: 0}
 --- !u!114 &330585547
 MonoBehaviour:
   m_ObjectHideFlags: 0
