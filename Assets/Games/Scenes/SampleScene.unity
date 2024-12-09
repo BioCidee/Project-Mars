@@ -165,13 +165,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c5eb4b0f588cb74c9c5ed4564faa23b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  height: 10
-  width: 10
+  customSeed: 0
+  length: 15
+  width: 15
   depth: 0
   offset: 0
   pointZero: {fileID: 1789874700}
   groundParent: {fileID: 198656274}
   ground: {fileID: 9188191569707869362, guid: 035ef9aecc7f90e4b93b20c7cbf4af69, type: 3}
+  groundMining: {fileID: 3771438727758540059, guid: adc5eb16d51dbb34296949da8445ca58, type: 3}
+  numberMine: 0
+  numberMineMax: 10
+  scale: 0.2
+  maxHeight: 5
 --- !u!1 &83096734
 GameObject:
   m_ObjectHideFlags: 0
@@ -572,6 +578,37 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1182456597
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1182456598}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1182456598
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1182456597}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 31.270617, y: -24.22105, z: 30.58734}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1789874699
 GameObject:
   m_ObjectHideFlags: 0
@@ -608,6 +645,7 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 83096735}
+  - {fileID: 1182456598}
   - {fileID: 832575519}
   - {fileID: 1150307481}
   - {fileID: 410087041}

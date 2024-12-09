@@ -12,7 +12,10 @@ public class MapGenerator : MonoBehaviour
     [SerializeField] private Transform pointZero;
     [SerializeField] private GameObject groundParent;
     [SerializeField] private GameObject ground;
-    [SerializeField] private GameObject point;
+    [SerializeField] private GameObject groundMining;
+    [SerializeField] private int minableBlockCount;
+    [SerializeField] private int maxMinableBlockCount = 10;
+    [SerializeField] private int minableBlockChance = 5;
     [SerializeField] private float scale = 0.1f;
     [SerializeField] private int maxHeight;
 
@@ -23,6 +26,7 @@ public class MapGenerator : MonoBehaviour
     }
 
     private void MapGeneration() {
+        minableBlockCount = 0;
         float mapSeed = (customSeed > 0) ? customSeed : Random.Range(0f, 5000f);
 
         if (groundList.Count > 0) {
@@ -43,6 +47,7 @@ public class MapGenerator : MonoBehaviour
             Destroy(go);
         }
 
+        minableBlockCount = 0;
         groundList.Clear();
     }
 
@@ -61,7 +66,25 @@ public class MapGenerator : MonoBehaviour
         height--;
 
         for (int h = 0; h < height; h++) {
-            GameObject newGroundHeight = Instantiate(ground);
+
+            GameObject go = ground;
+            if (h + 1 >= height && minableBlockCount < maxMinableBlockCount) {
+                if (minableBlockCount != 0) {
+                    int chance = Random.Range(0, 1);
+
+                    if (chance >= (minableBlockChance / 100)) {
+                        go = groundMining;
+                        minableBlockCount++;
+                    } else {
+                        go = ground;
+                    }
+                } else {
+                    go = groundMining;
+                    minableBlockCount++;
+                }
+            }
+
+            GameObject newGroundHeight = Instantiate(go);
             newGroundHeight.transform.parent = currentGround.transform;
             newGroundHeight.transform.position = new Vector3((1 * w) + offset, ((1 * h) + 1) + offset, (1 * l) + offset);
             groundList.Add(newGroundHeight);
