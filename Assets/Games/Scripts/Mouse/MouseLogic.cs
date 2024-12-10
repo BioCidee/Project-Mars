@@ -3,6 +3,9 @@ using UnityEngine;
 public class MouseLogic : MonoBehaviour
 {
     private Vector2 mousePosition;
+    private GameObject lastGameObjectHit;
+    private Color lastColor;
+    private MeshRenderer lastMaterial;
 
     private void Update() {
         GetBlocAim();
@@ -14,6 +17,18 @@ public class MouseLogic : MonoBehaviour
 
         if(Physics.Raycast(ray, out hit)) {
             GameObject objectHit = hit.transform.gameObject;
+
+            
+
+            if (lastGameObjectHit != objectHit && lastGameObjectHit != null) {
+                // Re mettre la dernière couleur du bloc au bloc 
+                lastGameObjectHit.GetComponentInChildren<MeshRenderer>().material.color = lastMaterial.material.color;
+                // Sauvegarder la couleur du nouveau bloc 
+                lastMaterial = objectHit.GetComponentInChildren<MeshRenderer>();
+                // Highlight le nouveau bloc
+                objectHit.GetComponentInChildren<MeshRenderer>().material.color = Color.red;
+                lastGameObjectHit = objectHit;
+            } 
         }
     }
 
