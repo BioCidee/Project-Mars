@@ -13,4 +13,14 @@ public class GroundLogic : MonoBehaviour
             objectOnTop = myObject;
         }
     }
+
+    public Transform ReturnTransformTop() {
+        return transformObjectOnTop;
+    }
+
+    public void RemoveObjectOnTop() {
+        if (objectOnTop != null) {
+            Destroy(objectOnTop.gameObject);
+        }
+    }
 }

@@ -7,13 +7,19 @@ public class MouseLogic : MonoBehaviour
     private Color lastColor;
     private MeshRenderer lastMaterial;
 
+    private bool isOnConstructionMode = false;
+    private GameObject objectToBuild;
+
     private void Update() {
         GetBlocAim();
 
-        if (lastGameObjectHit != null) 
+
+        if (lastGameObjectHit != null /* !!Rajouter le mode Construction plus tard!! */)
             if (Input.GetMouseButtonDown(0)) {
-                Renderer renderer = lastGameObjectHit.GetComponentInChildren<Renderer>();
-                renderer.material.color = Color.yellow;
+                if (lastGameObjectHit.GetComponent<GroundLogic>()) {
+                    GroundLogic ground = lastGameObjectHit.GetComponent<GroundLogic>();
+                    ground.SetObjectOnTop(objectToBuild);
+                }
             }
     }
 
@@ -24,7 +30,7 @@ public class MouseLogic : MonoBehaviour
         if(Physics.Raycast(ray, out hit)) {
             GameObject objectHit = hit.transform.gameObject;
 
-            if (lastGameObjectHit != objectHit) {
+            if (lastGameObjectHit != objectHit /* !!Rajouter le mode Construction plus tard!! */) {
                 RemoveHighlight();
                 HighLight(objectHit);
             }
