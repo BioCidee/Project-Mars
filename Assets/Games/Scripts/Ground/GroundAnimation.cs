@@ -4,8 +4,6 @@ using UnityEngine;
 public class GroundAnimation : MonoBehaviour
 {
     private float scaleTimer = 0;
-
-    [SerializeField] private Transform objectOnTop;
     [SerializeField] private float growSpeed;
 
     private void Start() {
