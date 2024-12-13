@@ -4,11 +4,12 @@ public class MouseLogic : MonoBehaviour
 {
     private Vector2 mousePosition;
     private GameObject lastGameObjectHit = null;
+    private GameObject currentGameObject = null;
     private Color lastColor;
     private MeshRenderer lastMaterial;
 
     private bool isOnConstructionMode = false;
-    private GameObject objectToBuild;
+    [SerializeField] private GameObject objectToBuild;
 
     private void Update() {
         GetBlocAim();
@@ -16,10 +17,8 @@ public class MouseLogic : MonoBehaviour
 
         if (lastGameObjectHit != null /* !!Rajouter le mode Construction plus tard!! */)
             if (Input.GetMouseButtonDown(0)) {
-                if (lastGameObjectHit.GetComponent<GroundLogic>()) {
-                    GroundLogic ground = lastGameObjectHit.GetComponent<GroundLogic>();
-                    ground.SetObjectOnTop(objectToBuild);
-                }
+                Debug.Log("Build");
+                BuildObject();
             }
     }
 
@@ -29,21 +28,33 @@ public class MouseLogic : MonoBehaviour
 
         if(Physics.Raycast(ray, out hit)) {
             GameObject objectHit = hit.transform.gameObject;
+            currentGameObject = objectHit;
 
-            if (lastGameObjectHit != objectHit /* !!Rajouter le mode Construction plus tard!! */) {
+            if (currentGameObject != lastGameObjectHit /* !!Rajouter le mode Construction plus tard!! */) {
                 RemoveHighlight();
-                HighLight(objectHit);
+                HighLight(currentGameObject);
             }
         } else {
             RemoveHighlight();
         }
     }
 
+    private void BuildObject() {
+        if (currentGameObject != null) {
+
+            GroundLogic gL = currentGameObject.GetComponent<GroundLogic>();
+
+            if (gL != null) {
+                gL.SetObjectOnTop(objectToBuild);
+            }
+        }
+    }
+
     private void HighLight(GameObject blocHit) {
-        Renderer renderer = blocHit.GetComponentInChildren<Renderer>();
+        Renderer renderer = currentGameObject.GetComponentInChildren<Renderer>();
         lastColor = renderer.material.color;
         renderer.material.color = Color.red;
-        lastGameObjectHit = blocHit;
+        lastGameObjectHit = currentGameObject;
     }
 
     private void RemoveHighlight() {

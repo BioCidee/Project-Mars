@@ -159,6 +159,7 @@ GameObject:
   m_Component:
   - component: {fileID: 141101535986942550}
   - component: {fileID: -1760522896430946506}
+  - component: {fileID: 4754553374084029778}
   - component: {fileID: 2144765726494143719}
   m_Layer: 0
   m_Name: Ground
@@ -196,8 +197,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c57a18a5fd2616b46acf2cda19b286cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectOnTop: {fileID: 309544580703979181}
   growSpeed: 0.4
+--- !u!114 &4754553374084029778
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9188191569707869362}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c8ff2cd061aa29a4cbe4938078c52cd2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  transformObjectOnTop: {fileID: 309544580703979181}
+  objectOnTop: {fileID: 0}
 --- !u!65 &2144765726494143719
 BoxCollider:
   m_ObjectHideFlags: 0
