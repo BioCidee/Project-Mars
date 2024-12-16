@@ -16,9 +16,13 @@ public class MouseLogic : MonoBehaviour
 
 
         if (lastGameObjectHit != null /* !!Rajouter le mode Construction plus tard!! */)
-            if (Input.GetMouseButtonDown(0)) {
+            if (Input.GetMouseButtonDown(0) && isOnConstructionMode) {
                 Debug.Log("Build");
+                if (objectToBuild != null) {
+                    Debug.LogError("Construction mode activate, but no building to build");
+                }
                 BuildObject();
+                isOnConstructionMode = false;
             }
     }
 
@@ -30,7 +34,7 @@ public class MouseLogic : MonoBehaviour
             GameObject objectHit = hit.transform.gameObject;
             currentGameObject = objectHit;
 
-            if (currentGameObject != lastGameObjectHit /* !!Rajouter le mode Construction plus tard!! */) {
+            if (currentGameObject != lastGameObjectHit && isOnConstructionMode /* !!Rajouter le mode Construction plus tard!! */) {
                 RemoveHighlight();
                 HighLight(currentGameObject);
             }
@@ -63,5 +67,11 @@ public class MouseLogic : MonoBehaviour
             renderer.material.color = lastColor;
             lastGameObjectHit = null;
         }
+    }
+
+    public void GetBuilding(GameObject _objectToBuild) {
+        objectToBuild = null;
+        objectToBuild = _objectToBuild;
+        isOnConstructionMode = true;
     }
 }
