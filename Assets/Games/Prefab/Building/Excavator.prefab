@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4853944916123545952}
   - component: {fileID: 1876250727578744049}
+  - component: {fileID: 4059950497616068046}
   - component: {fileID: 5128833856281850379}
   m_Layer: 0
   m_Name: Excavator
@@ -32,6 +33,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4096852304303871868}
+  - {fileID: 6932643917660359645}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1876250727578744049
@@ -47,6 +49,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timerToProduce: 3
+--- !u!114 &4059950497616068046
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 968691698374137964}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb34b20a19b4f414fac782fba576df2a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bottom: {fileID: 6932643917660359645}
+  layerGroundMining:
+    serializedVersion: 2
+    m_Bits: 64
 --- !u!65 &5128833856281850379
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -98,6 +116,37 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4934205438278107248}
+  m_Father: {fileID: 4853944916123545952}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &8565102348736843919
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6932643917660359645}
+  m_Layer: 0
+  m_Name: SpawnCheck
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6932643917660359645
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8565102348736843919}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.228, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
   m_Father: {fileID: 4853944916123545952}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &9028215582721819899

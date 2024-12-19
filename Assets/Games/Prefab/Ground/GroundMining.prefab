@@ -56,38 +56,13 @@ PrefabInstance:
       propertyPath: m_Name
       value: GroundMining
       objectReference: {fileID: 0}
+    - target: {fileID: 9188191569707869362, guid: 035ef9aecc7f90e4b93b20c7cbf4af69, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 8309828678549212575, guid: 035ef9aecc7f90e4b93b20c7cbf4af69, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 9188191569707869362, guid: 035ef9aecc7f90e4b93b20c7cbf4af69, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 7596341839280969988}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 035ef9aecc7f90e4b93b20c7cbf4af69, type: 3}
---- !u!1 &3771438727758540059 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 9188191569707869362, guid: 035ef9aecc7f90e4b93b20c7cbf4af69, type: 3}
-  m_PrefabInstance: {fileID: 5464506850699364777}
-  m_PrefabAsset: {fileID: 0}
---- !u!65 &7596341839280969988
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3771438727758540059}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
