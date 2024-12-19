@@ -5,7 +5,7 @@ public class MiningResource : MonoBehaviour
 {
     [SerializeField] private float timerToProduce;
     private EventManager eV;
-    private bool isMining;
+    private bool isMining = true;
 
     private void Start() {
         eV = EventManager.Instance;
@@ -16,6 +16,7 @@ public class MiningResource : MonoBehaviour
         while(isMining == true) {
             yield return new WaitForSeconds(timerToProduce);
             ProduceResource();
+            Debug.Log("Produce Fuel");
         }
     }
 

@@ -4,6 +4,7 @@ using UnityEngine;
 public class ResourceManagement : MonoBehaviour
 {
     [SerializeField] private int oilResource;
+    [SerializeField] private Ui_ResourceManager ui;
     private Action produceOil;
     private enum nameEvent {
         makeOil,
@@ -17,5 +18,10 @@ public class ResourceManagement : MonoBehaviour
 
     public void MakeOil() {
         oilResource++;
+        UpdateFuelUi();
+    }
+
+    private void UpdateFuelUi() {
+        ui.UpdateCurrentFuel(oilResource);
     }
 }

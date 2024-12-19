@@ -10,7 +10,7 @@ public class SpawnRule : MonoBehaviour
         if (Physics.CheckSphere(bottom.position, 0.2f, layerGroundMining)) {
             Debug.Log("IsOk");
         } else {
-            Debug.LogError("This excavator is not build on a MiningGround");
+            OnBuildIsWrong();
         }
     }
 
@@ -19,7 +19,8 @@ public class SpawnRule : MonoBehaviour
         Gizmos.DrawSphere(bottom.position, 0.2f);
     }
 
-    private void WhenBuildIsWrong() {
-
+    private void OnBuildIsWrong() {
+        Debug.LogError("This excavator is not build on a MiningGround");
+        Destroy(gameObject);
     }
 }
