@@ -8,6 +8,6 @@ public class Ui_BuildManager : MonoBehaviour
     [SerializeField] private GameObject Excavator;
 
     public void BuildExcavator() {
-
+        mouseLogic.GetBuilding(Excavator);
     }
 }

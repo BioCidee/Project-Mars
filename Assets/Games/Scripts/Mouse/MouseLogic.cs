@@ -15,14 +15,14 @@ public class MouseLogic : MonoBehaviour
         GetBlocAim();
 
 
-        if (lastGameObjectHit != null /* !!Rajouter le mode Construction plus tard!! */)
+        if (lastGameObjectHit != null )
             if (Input.GetMouseButtonDown(0) && isOnConstructionMode) {
-                Debug.Log("Build");
-                if (objectToBuild != null) {
+                if (objectToBuild == null) {
                     Debug.LogError("Construction mode activate, but no building to build");
+                } else {
+                    BuildObject();
+                    isOnConstructionMode = false;
                 }
-                BuildObject();
-                isOnConstructionMode = false;
             }
     }
 
@@ -49,7 +49,12 @@ public class MouseLogic : MonoBehaviour
             GroundLogic gL = currentGameObject.GetComponent<GroundLogic>();
 
             if (gL != null) {
-                gL.SetObjectOnTop(objectToBuild);
+                if (gL.IsGroundFree() == true) {
+                    gL.SetObjectOnTop(objectToBuild);
+                } else {
+                    Debug.Log("There is already a object here");
+                    isOnConstructionMode = true;
+                }
             }
         }
     }

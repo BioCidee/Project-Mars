@@ -21,6 +21,14 @@ public class GroundLogic : MonoBehaviour
         return transformObjectOnTop;
     }
 
+    public bool IsGroundFree() {
+        if (objectOnTop != null) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+
     public void RemoveObjectOnTop() {
         if (objectOnTop != null) {
             Destroy(objectOnTop.gameObject);
