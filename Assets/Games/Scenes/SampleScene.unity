@@ -903,7 +903,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 212542890}
         m_TargetAssemblyTypeName: Ui_BuildManager, Assembly-CSharp
-        m_MethodName: BuildExcavator
+        m_MethodName: BuildTurret
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
