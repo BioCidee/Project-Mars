@@ -8,7 +8,6 @@ public class SpawnRule : MonoBehaviour
 
     private void Start() {
         if (Physics.CheckSphere(bottom.position, 0.2f, layerGroundMining)) {
-            Debug.Log("IsOk");
         } else {
             OnBuildIsWrong();
         }
@@ -20,7 +19,7 @@ public class SpawnRule : MonoBehaviour
     }
 
     private void OnBuildIsWrong() {
-        Debug.LogError("This excavator is not build on a MiningGround");
+        Debug.LogError("This is not build on the right ground");
         Destroy(gameObject);
     }
 }
