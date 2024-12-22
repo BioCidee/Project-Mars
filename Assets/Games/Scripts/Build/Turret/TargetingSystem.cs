@@ -3,58 +3,52 @@ using UnityEngine;
 public class TargetingSystem : MonoBehaviour
 {
     // Targeting system
-    [SerializeField] private int detectionRadius;
     [SerializeField] private LayerMask ennemyLayer;
-    private Vector3 startCanonTarget;
-    private Vector3 canonTransform;
-    private Vector3 ennemyPosition;
+    [SerializeField] private Transform Cannon;
+    [SerializeField] private GameObject target;
+    [SerializeField] private int speedRotation;
+    private Vector3 targetPosition;
     private bool isAnyTarget;
-
-    // Rotation Parameters
-    private Transform currentRotation;
+    private BoxCollider Collider;
 
     private void Start()
     {
-        canonTransform = startCanonTarget;
-    }
+        Collider = GetComponent<BoxCollider>();
 
-    private void FixedUpdate()
-    {
-        EnnemyDetection();
-    }
-
-    private void EnnemyDetection()
-    {
-        RaycastHit hit;
-        isAnyTarget = Physics.SphereCast(canonTransform, detectionRadius, Vector3.forward, out hit);
-
-        if (isAnyTarget){
-            GameObject hitObject = hit.collider.gameObject;
-            Debug.Log("Object DETECTED");
-
-            if (hitObject != null && hitObject.layer == ennemyLayer) {
-                Debug.Log("OVNI DETECTED");
-            }
+        if(Collider == null)
+        {
+            Debug.Log("there is no collider !");
         }
         else
         {
-            return;
+            Debug.Log(Collider);
         }
     }
 
-    private void UpdateHorizontalRotation()
+    private void Update()
     {
-        
+        if (target != null) {
+            Rotation();
+        }
     }
 
-    private void UpdateVerticalRotation()
+    private void OnTriggerExit(Collider other)
     {
-        
+        Debug.Log("Object Out : " + other.gameObject.name);
+        target = null;
     }
 
-    private void OnDrawGizmos()
+    private void OnTriggerEnter(Collider other)
     {
-        Gizmos.color = Color.blue;
-        Gizmos.DrawSphere(canonTransform, detectionRadius);
+        Debug.Log("Object Enter : " + other.gameObject.name);
+        target = other.gameObject; 
+    }
+
+    private void Rotation()
+    {
+        Vector3 direction = (target.transform.position - Cannon.position).normalized;
+        Quaternion newRotation = Quaternion.LookRotation(direction);
+
+        Cannon.rotation = Quaternion.RotateTowards(Cannon.rotation, newRotation, speedRotation * Time.deltaTime);
     }
 }

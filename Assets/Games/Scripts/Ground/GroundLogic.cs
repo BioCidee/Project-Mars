@@ -6,14 +6,11 @@ public class GroundLogic : MonoBehaviour
     [SerializeField] private GameObject objectOnTop = null;
 
     public void SetObjectOnTop(GameObject gameObject) {
-        Debug.Log("Launch Fonction SetObjectOnTop");
         if (objectOnTop == null) {
-            Debug.Log("Begin Build");
             GameObject myObject = Instantiate(gameObject);
             myObject.transform.position = transformObjectOnTop.transform.position;
 
             objectOnTop = myObject;
-            Debug.Log("Bloc is build on " +  this.name);
         }
     }
 
