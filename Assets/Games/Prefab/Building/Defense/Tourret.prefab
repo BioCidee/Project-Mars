@@ -234,10 +234,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ennemyLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 128
   Cannon: {fileID: 5360887968863059435}
   target: {fileID: 0}
-  speedRotation: 0
+  speedRotation: 15
 --- !u!1 &5505003180039581082
 GameObject:
   m_ObjectHideFlags: 0

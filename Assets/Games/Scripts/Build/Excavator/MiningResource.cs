@@ -16,7 +16,6 @@ public class MiningResource : MonoBehaviour
         while(isMining == true) {
             yield return new WaitForSeconds(timerToProduce);
             ProduceResource();
-            Debug.Log("Produce Fuel");
         }
     }
 
