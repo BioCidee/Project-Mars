@@ -2,14 +2,17 @@ using UnityEngine;
 
 public class MouseLogic : MonoBehaviour
 {
+    private ResourceManagement rM;
     private Vector2 mousePosition;
     private GameObject lastGameObjectHit = null;
     private GameObject currentGameObject = null;
     private Color lastColor;
     private MeshRenderer lastMaterial;
+    [SerializeField] private LayerMask constructionLayer;
 
     private bool isOnConstructionMode = false;
     [SerializeField] private GameObject objectToBuild;
+    private int priceObjToBuild;
 
     private void Update() {
         GetBlocAim();
@@ -30,7 +33,7 @@ public class MouseLogic : MonoBehaviour
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
 
-        if(Physics.Raycast(ray, out hit)) {
+        if(Physics.Raycast(ray, out hit, Mathf.Infinity, constructionLayer)) {
             GameObject objectHit = hit.transform.gameObject;
             currentGameObject = objectHit;
 
@@ -49,7 +52,7 @@ public class MouseLogic : MonoBehaviour
             GroundLogic gL = currentGameObject.GetComponent<GroundLogic>();
 
             if (gL != null) {
-                if (gL.IsGroundFree() == true) {
+                if (gL.IsGroundFree() == true && rM.CanBuy(priceObjToBuild)) {
                     gL.SetObjectOnTop(objectToBuild);
                 } else {
                     Debug.Log("There is already a object here");
@@ -74,9 +77,10 @@ public class MouseLogic : MonoBehaviour
         }
     }
 
-    public void GetBuilding(GameObject _objectToBuild) {
+    public void GetBuilding(GameObject _objectToBuild, int _price) {
         objectToBuild = null;
         objectToBuild = _objectToBuild;
+        priceObjToBuild = _price;
         isOnConstructionMode = true;
     }
 }

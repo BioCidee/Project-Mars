@@ -16,6 +16,17 @@ public class ResourceManagement : MonoBehaviour
         eV.SubscribreToEvent(nameEvent.makeOil.ToString(), MakeOil);
     }
 
+    public bool CanBuy(int price)
+    {
+        if (price < oilResource) {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
     public void MakeOil() {
         oilResource++;
         UpdateFuelUi();

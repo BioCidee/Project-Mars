@@ -7,8 +7,10 @@ public class TargetingSystem : MonoBehaviour
     [SerializeField] private Transform Cannon;
     [SerializeField] private GameObject target;
     [SerializeField] private int speedRotation;
+    [SerializeField] private float angleTolerated;
     private Vector3 targetPosition;
     private bool isAnyTarget;
+    private bool isTargetingReady;
     private BoxCollider Collider;
 
     private void Start()
@@ -50,5 +52,20 @@ public class TargetingSystem : MonoBehaviour
         Quaternion newRotation = Quaternion.LookRotation(direction);
 
         Cannon.rotation = Quaternion.RotateTowards(Cannon.rotation, newRotation, speedRotation * Time.deltaTime);
+
+        float angleDif = Quaternion.Angle(Cannon.rotation, newRotation);
+
+        if (angleDif < angleTolerated) {
+            isTargetingReady = true;
+        }
+        else
+        {
+            isTargetingReady = false;
+        }
+    }
+
+    public bool ReturnIfTargetingReady()
+    {
+        return isTargetingReady;
     }
 }

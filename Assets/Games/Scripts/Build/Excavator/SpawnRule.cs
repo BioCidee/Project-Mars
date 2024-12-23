@@ -19,7 +19,6 @@ public class SpawnRule : MonoBehaviour
     }
 
     private void OnBuildIsWrong() {
-        Debug.LogError("This is not build on the right ground");
         Destroy(gameObject);
     }
 }
