@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class MouseLogic : MonoBehaviour
 {
-    private ResourceManagement rM;
+    [SerializeField] private ResourceManagement rM;
     private Vector2 mousePosition;
     private GameObject lastGameObjectHit = null;
     private GameObject currentGameObject = null;
@@ -52,10 +52,14 @@ public class MouseLogic : MonoBehaviour
             GroundLogic gL = currentGameObject.GetComponent<GroundLogic>();
 
             if (gL != null) {
-                if (gL.IsGroundFree() == true && rM.CanBuy(priceObjToBuild)) {
-                    gL.SetObjectOnTop(objectToBuild);
+                if (gL.IsGroundFree() == true){
+                    if (rM.CanBuy(priceObjToBuild)){
+                        gL.SetObjectOnTop(objectToBuild);
+                    } else {
+                        Debug.Log("No money");
+                    }
                 } else {
-                    Debug.Log("There is already a object here");
+                    Debug.Log("There is already an object here ");
                     isOnConstructionMode = true;
                 }
             }

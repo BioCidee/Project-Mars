@@ -18,7 +18,7 @@ public class ResourceManagement : MonoBehaviour
 
     public bool CanBuy(int price)
     {
-        if (price < oilResource) {
+        if (price <= oilResource) {
             return true;
         }
         else

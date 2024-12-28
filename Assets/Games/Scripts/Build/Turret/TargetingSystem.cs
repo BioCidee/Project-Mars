@@ -42,8 +42,10 @@ public class TargetingSystem : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("Object Enter : " + other.gameObject.name);
-        target = other.gameObject; 
+        if (other.gameObject.layer == ennemyLayer) {
+            Debug.Log("Object Enter : " + other.gameObject.name);
+            target = other.gameObject;
+        }
     }
 
     private void Rotation()
