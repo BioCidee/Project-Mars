@@ -22,6 +22,8 @@ public class MapGenerator : MonoBehaviour
     private List<GameObject> groundList = new List<GameObject>();
 
     private void Start() {
+        GameManager.Instance.SetMapParameters(width, length);
+
         MapGeneration();
     }
 
