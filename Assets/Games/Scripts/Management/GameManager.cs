@@ -5,6 +5,7 @@ public class GameManager : MonoBehaviour
     // Ship
     private Transform shipTransform;
     private bool isShipSet = false;
+    private int shipNumber = 0;
 
     // Map Parameters
     private int width;
@@ -35,8 +36,11 @@ public class GameManager : MonoBehaviour
     }
 
     public void SetShipParameters(Transform _shipTransform) {
-        shipTransform = _shipTransform;
-        isShipSet = true;
+        if (shipNumber == 0 || isShipSet == false) {
+            shipTransform = _shipTransform;
+            isShipSet = true;
+            Debug.Log("Ship parameters set");
+        }
     }
 
     public void SetMapParameters(int _width, int _height) {
