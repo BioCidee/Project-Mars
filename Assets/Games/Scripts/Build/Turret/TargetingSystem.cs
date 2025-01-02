@@ -36,19 +36,23 @@ public class TargetingSystem : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        Debug.Log("Object Out : " + other.gameObject.name);
-        target = null;
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.gameObject.layer == ennemyLayer) {
+        if (other.gameObject.layer == 7) { // LayerMask 7 = Ennemy
             Debug.Log("Object Enter : " + other.gameObject.name);
             target = other.gameObject;
         }
     }
 
-    private void Rotation()
+    private void OnTriggerEnter(Collider other)
+    {
+        Debug.Log(other.gameObject.layer);
+
+        if (other.gameObject.layer == 7) { // LayerMask 7 = Ennemy
+            Debug.Log("Object Enter : " + other.gameObject.name);
+            target = other.gameObject;
+        }
+    }
+
+    private void Rotation() 
     {
         Vector3 direction = (target.transform.position - Cannon.position).normalized;
         Quaternion newRotation = Quaternion.LookRotation(direction);
@@ -58,11 +62,11 @@ public class TargetingSystem : MonoBehaviour
         float angleDif = Quaternion.Angle(Cannon.rotation, newRotation);
 
         if (angleDif < angleTolerated) {
-            isTargetingReady = true;
+            isTargetingReady = true; // Is Ready to fire
         }
         else
         {
-            isTargetingReady = false;
+            isTargetingReady = false; // Is not ready to fire
         }
     }
 

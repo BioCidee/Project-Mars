@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    // Transform
+    // Ship
     private Transform shipTransform;
     private bool isShipSet = false;
 
@@ -34,8 +34,9 @@ public class GameManager : MonoBehaviour
         InitializeSingleton();
     }
 
-    public void SetShipTransform() {
-
+    public void SetShipParameters(Transform _shipTransform) {
+        shipTransform = _shipTransform;
+        isShipSet = true;
     }
 
     public void SetMapParameters(int _width, int _height) {
@@ -45,5 +46,9 @@ public class GameManager : MonoBehaviour
     public void ReturnMapParameters(out int _width, out int _length) {
         _width = width;
         _length = length;
+    }
+
+    private void RestartGame() {
+        isShipSet = false;
     }
 }

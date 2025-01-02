@@ -7,9 +7,11 @@ public class Ui_BuildManager : MonoBehaviour
     [Header("Building")]
     [SerializeField] private GameObject Excavator;
     [SerializeField] private GameObject Turret;
+    [SerializeField] private GameObject MainShip;
 
     private int excavaTorPrice = 0;
     private int turretPrice = 20;
+    private int ShipPrice = 0;
 
     public void BuildExcavator() {
         mouseLogic.GetBuilding(Excavator, excavaTorPrice);
@@ -18,5 +20,9 @@ public class Ui_BuildManager : MonoBehaviour
     public void BuildTurret()
     {
         mouseLogic.GetBuilding(Turret, turretPrice);
+    }
+
+    public void BuildMainShip() {
+        mouseLogic.GetBuilding(MainShip, ShipPrice);
     }
 }
