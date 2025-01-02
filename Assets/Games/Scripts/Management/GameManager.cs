@@ -35,6 +35,17 @@ public class GameManager : MonoBehaviour
         InitializeSingleton();
     }
 
+    private void Start() {
+        if (shipTransform != null) {
+            StartGame();
+        }
+
+        EventManager eM = EventManager.Instance;
+
+        eM.CreateEvent("OnGameStart");
+        eM.CreateEvent("OnGameEnd");
+    }
+
     public void SetShipParameters(Transform _shipTransform) {
         if (shipNumber == 0 || isShipSet == false) {
             shipTransform = _shipTransform;
@@ -50,6 +61,14 @@ public class GameManager : MonoBehaviour
     public void ReturnMapParameters(out int _width, out int _length) {
         _width = width;
         _length = length;
+    }
+
+    public bool ReturnMainShipStatue() {
+        return isShipSet;
+    }
+
+    private void StartGame() {
+
     }
 
     private void RestartGame() {

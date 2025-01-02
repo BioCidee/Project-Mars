@@ -11,7 +11,6 @@ public class Ui_BuildManager : MonoBehaviour
 
     private int excavaTorPrice = 0;
     private int turretPrice = 20;
-    private int ShipPrice = 0;
 
     public void BuildExcavator() {
         mouseLogic.GetBuilding(Excavator, excavaTorPrice);
@@ -23,6 +22,6 @@ public class Ui_BuildManager : MonoBehaviour
     }
 
     public void BuildMainShip() {
-        mouseLogic.GetBuilding(MainShip, ShipPrice);
+        mouseLogic.GetShipBuilding(MainShip);
     }
 }

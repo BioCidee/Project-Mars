@@ -12,6 +12,7 @@ public class MouseLogic : MonoBehaviour
 
     private bool isOnConstructionMode = false;
     [SerializeField] private GameObject objectToBuild;
+    private bool isBuildingIsShip = false;
     private int priceObjToBuild;
 
     private void Update() {
@@ -23,8 +24,13 @@ public class MouseLogic : MonoBehaviour
                 if (objectToBuild == null) {
                     Debug.LogError("Construction mode activate, but no building to build");
                 } else {
-                    BuildObject();
-                    isOnConstructionMode = false;
+                    if (isBuildingIsShip) {
+                        BuildMainShip();
+                        isOnConstructionMode = false;
+                    } else {
+                        BuildObject();
+                        isOnConstructionMode = false;
+                    }
                 }
             }
     }
@@ -43,6 +49,28 @@ public class MouseLogic : MonoBehaviour
             }
         } else {
             RemoveHighlight();
+        }
+    }
+
+    public void BuildMainShip() {
+        if (currentGameObject != null) {
+
+            GroundLogic gL = currentGameObject.GetComponent<GroundLogic>();
+
+            if (gL != null) {
+                if (gL.IsGroundFree() == true) {
+                        if (!GameManager.Instance.ReturnMainShipStatue()) {
+                            gL.SetObjectOnTop(objectToBuild);
+                        } else {
+                            Debug.Log("Main ship already build");
+                            isOnConstructionMode = false;
+                            objectToBuild = null;
+                        }
+                } else {
+                    Debug.Log("There is already an object here ");
+                    isOnConstructionMode = true;
+                }
+            }
         }
     }
 
@@ -81,8 +109,22 @@ public class MouseLogic : MonoBehaviour
         }
     }
 
+    public void GetShipBuilding(GameObject _objectToBuild) {
+        isBuildingIsShip = true;
+
+        if(objectToBuild != null) 
+            objectToBuild = null;
+
+        objectToBuild = _objectToBuild;
+        isOnConstructionMode = true;
+    }
+
     public void GetBuilding(GameObject _objectToBuild, int _price) {
-        objectToBuild = null;
+        isBuildingIsShip = false;
+
+        if (objectToBuild != null)
+            objectToBuild = null;
+
         objectToBuild = _objectToBuild;
         priceObjToBuild = _price;
         isOnConstructionMode = true;
