@@ -63,6 +63,11 @@ public class GameManager : MonoBehaviour
         _length = length;
     }
 
+    public void ReturnMapSize(out int _width, out int _length) {
+        _width = width;
+        _length = length;
+    }
+
     public bool ReturnMainShipStatue() {
         return isShipSet;
     }

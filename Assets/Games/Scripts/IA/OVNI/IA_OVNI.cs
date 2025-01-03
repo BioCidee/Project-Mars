@@ -5,8 +5,11 @@ public class IA_OVNI : MonoBehaviour
 {
     // System
     private GameManager gameManager;
-    private int xMap;
-    private int zMap;
+    private Rigidbody rb;
+
+    // Map Parameters
+    private int widthMap;
+    private int lenghtMap;
 
     // Transform
     private Transform shipPosition;
@@ -16,37 +19,19 @@ public class IA_OVNI : MonoBehaviour
     private bool isAnyTarget = false;
 
     // Movement
+    [SerializeField] private int moveSpeed;
     private Transform dir;
     private bool isAnyDir = false;
 
     private void Start() {
+        rb = GetComponent<Rigidbody>();
         gameManager = GameManager.Instance;
 
         if (gameManager == null)
             Debug.LogError("No Game Manager detected in IA_OVNI");
+
+        gameManager.ReturnMapParameters(out widthMap,out lenghtMap);
     }
 
-    private void Update() {
-        if(!isAnyTarget && !isAnyDir) GetShipDirection();
-        if (!isAnyTarget && isAnyDir) Moving();
-        if(isAnyTarget) Attack();
-    }
-
-    private void Moving() {
-
-    }
-
-    private void GetShipDirection() {
-        if (!shipPosition) Debug.LogWarning("There is not Ship in this game");
-
-        dir = shipPosition;
-    }
-
-    private void Attack() {
-
-    }
-
-    private void Death() {
-
-    }
+    
 }

@@ -2,18 +2,26 @@ using UnityEngine;
 
 public class MouseLogic : MonoBehaviour
 {
+    //System
     [SerializeField] private ResourceManagement rM;
+
+    // Mouse Parameters
     private Vector2 mousePosition;
+
+    // HilghLight Parameters
+    private Color lastColor;
+
+    //Build Parameters
+    [SerializeField] private GameObject objectToBuild;
+    [SerializeField] private LayerMask constructionLayer;
     private GameObject lastGameObjectHit = null;
     private GameObject currentGameObject = null;
-    private Color lastColor;
-    private MeshRenderer lastMaterial;
-    [SerializeField] private LayerMask constructionLayer;
-
-    private bool isOnConstructionMode = false;
-    [SerializeField] private GameObject objectToBuild;
-    private bool isBuildingIsShip = false;
     private int priceObjToBuild;
+    private bool isOnConstructionMode = false;
+
+    // Main Ship
+    private bool isNextBuildIsShip = false;
+    private bool isMainShipIsBuild = false;
 
     private void Update() {
         GetBlocAim();
@@ -24,10 +32,10 @@ public class MouseLogic : MonoBehaviour
                 if (objectToBuild == null) {
                     Debug.LogError("Construction mode activate, but no building to build");
                 } else {
-                    if (isBuildingIsShip) {
+                    if (isNextBuildIsShip) {
                         BuildMainShip();
                         isOnConstructionMode = false;
-                    } else {
+                    } else if (isMainShipIsBuild) {
                         BuildObject();
                         isOnConstructionMode = false;
                     }
@@ -61,13 +69,12 @@ public class MouseLogic : MonoBehaviour
                 if (gL.IsGroundFree() == true) {
                         if (!GameManager.Instance.ReturnMainShipStatue()) {
                             gL.SetObjectOnTop(objectToBuild);
+                            isMainShipIsBuild = true;
                         } else {
-                            Debug.Log("Main ship already build");
                             isOnConstructionMode = false;
                             objectToBuild = null;
                         }
                 } else {
-                    Debug.Log("There is already an object here ");
                     isOnConstructionMode = true;
                 }
             }
@@ -84,10 +91,8 @@ public class MouseLogic : MonoBehaviour
                     if (rM.CanBuy(priceObjToBuild)){
                         gL.SetObjectOnTop(objectToBuild);
                     } else {
-                        Debug.Log("No money");
                     }
                 } else {
-                    Debug.Log("There is already an object here ");
                     isOnConstructionMode = true;
                 }
             }
@@ -110,7 +115,7 @@ public class MouseLogic : MonoBehaviour
     }
 
     public void GetShipBuilding(GameObject _objectToBuild) {
-        isBuildingIsShip = true;
+        isNextBuildIsShip = true;
 
         if(objectToBuild != null) 
             objectToBuild = null;
@@ -120,7 +125,7 @@ public class MouseLogic : MonoBehaviour
     }
 
     public void GetBuilding(GameObject _objectToBuild, int _price) {
-        isBuildingIsShip = false;
+        isNextBuildIsShip = false;
 
         if (objectToBuild != null)
             objectToBuild = null;
