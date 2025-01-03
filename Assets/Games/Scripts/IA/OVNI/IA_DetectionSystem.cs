@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DetectionSystem : MonoBehaviour
+public class IA_DetectionSystem : MonoBehaviour
 {
     // System
     private Collider m_Collider;
@@ -40,10 +40,15 @@ public class DetectionSystem : MonoBehaviour
 
     private void AddThreat(GameObject _potentialThreat) {
         if (listThreat.Contains(_potentialThreat)) {
+            Debug.Log("Threat already in list");
             return;
         } else {
             listThreat.Add(_potentialThreat);
             Debug.Log("Add threat");
         }
+    }
+
+    public List<GameObject> ReturnListThreat() {
+        return listThreat;
     }
 }

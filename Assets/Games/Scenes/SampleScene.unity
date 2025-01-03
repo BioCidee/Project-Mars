@@ -1441,10 +1441,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rM: {fileID: 1182456600}
+  objectToBuild: {fileID: 1234130309769658990, guid: 62a00ad508660bb4a9268d4b72c6e213, type: 3}
   constructionLayer:
     serializedVersion: 2
     m_Bits: 72
-  objectToBuild: {fileID: 1234130309769658990, guid: 62a00ad508660bb4a9268d4b72c6e213, type: 3}
 --- !u!114 &1182456600
 MonoBehaviour:
   m_ObjectHideFlags: 0
