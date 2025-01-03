@@ -44,6 +44,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1004513094867183263}
   - component: {fileID: 5980384492072302794}
+  - component: {fileID: 2217024417842564651}
   m_Layer: 8
   m_Name: MainShip
   m_TagString: Untagged
@@ -79,6 +80,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9177c526ae6c66748844f16650299623, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!65 &2217024417842564651
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1080346852581766061}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.5, y: 3, z: 0.9}
+  m_Center: {x: 0, y: 1.5, z: 0}
 --- !u!1 &1323386573285865730
 GameObject:
   m_ObjectHideFlags: 0
