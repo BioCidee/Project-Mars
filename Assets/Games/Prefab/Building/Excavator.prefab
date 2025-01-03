@@ -4877,7 +4877,7 @@ GameObject:
   - component: {fileID: 4059950497616068046}
   - component: {fileID: 5128833856281850379}
   - component: {fileID: 2577398491668146369}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Excavator
   m_TagString: Untagged
   m_Icon: {fileID: 0}

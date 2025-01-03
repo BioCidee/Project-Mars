@@ -76,7 +76,7 @@ GameObject:
   - component: {fileID: 6996979248645955334}
   - component: {fileID: 410373823710508187}
   - component: {fileID: 4667167908998542236}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Tourret
   m_TagString: Untagged
   m_Icon: {fileID: 0}
