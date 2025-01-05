@@ -4,6 +4,7 @@ using UnityEngine;
 public class IA_DetectionSystem : MonoBehaviour
 {
     // System
+    [SerializeField] private IA_Movement _mov;
     private Collider m_Collider;
 
     //Detection
@@ -31,6 +32,7 @@ public class IA_DetectionSystem : MonoBehaviour
             if (listObjectsDetected[i].gameObject.layer == 8) {
                 Debug.Log("Start Thread Adding");
                 AddThreat(listObjectsDetected[i]);
+                _mov.SetThreatList(ReturnListThreat());
             } else {
                 listObjectsDetected.RemoveAt(i);
                 Debug.Log("Detection Removed");

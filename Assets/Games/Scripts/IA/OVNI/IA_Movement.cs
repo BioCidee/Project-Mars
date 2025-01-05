@@ -11,25 +11,58 @@ public class IA_Movement : MonoBehaviour
     private List<GameObject> listTarget;
 
     // Movement Parameters
-    private int moveSpeed;
-    private int stopDistance;
-    private float fixedHeight;
+    [Header("Movement Parameters")]
+    [SerializeField] private int stopDistance;
+    [SerializeField] private int moveSpeed;
+    [SerializeField] private float fixedHeight;
+    private bool isReadyToFire = false;
 
     private void Start() {
-        fixedHeight = transform.position.y;
+        listTarget = new List<GameObject>();
     }
 
     private void Update() {
-        listTarget = _detectionSystem.ReturnListThreat();
+        if(target == null) {
+            isReadyToFire = false;
+            SetTarget();
+        } else {
+            GoToTarget();
+        }  
+    }
+
+    public void SetThreatList(List<GameObject> _ThreatList) {
+        listTarget = _ThreatList;
+    }
+
+    public bool ReturnIfIsReadyToFire() {
+        return isReadyToFire;
     }
 
     private void GoToTarget() {
-        float distance = Vector3.Distance(transform.position.x, fixedHeight, transform.position.z);
+        Vector3 targetPosition = new Vector3(target.transform.position.x, fixedHeight, target.transform.position.z);
+
+        float distance = Vector3.Distance(new Vector3(transform.position.x, fixedHeight, transform.position.z),
+                                          new Vector3(targetPosition.x, fixedHeight, targetPosition.z));
+
+        if (distance > stopDistance) {
+            Vector3 dir = (targetPosition - transform.position).normalized;
+            transform.position += dir * moveSpeed * Time.deltaTime;
+            isReadyToFire = false;
+        } else {
+            isReadyToFire = true;
+        }
     }
 
-    private void SetTarget() {
-        if (listTarget.Count != 0) {
-            target = listTarget[0];
-        }
+    private bool SetTarget() {
+            if (listTarget.Count != 0) {
+                target = listTarget[0];
+                return true;
+            } else {
+                return false;
+            }
+    }   
+
+    private void TakeRandomDir() {
+
     }
 }
