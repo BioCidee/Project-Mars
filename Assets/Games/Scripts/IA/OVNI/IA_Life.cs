@@ -7,14 +7,33 @@ public class IA_Life : MonoBehaviour, I_Damageable {
     private int minLife = 0;
     private int currentLife = 0;
 
+    private enum nameOfEvent {
+        OnPlayerDie,
+    }
+
     // Colision System
     private Collider Collider;
 
     private void Start() {
-        
+        Initialize();
+    }
+
+    private void Initialize() {
+        currentLife = maxLife;
+    }
+
+    private void CheckLife() {
+        if (currentLife <= minLife) {
+
+        }
+    }
+
+    private void Death() {
+        EventManager.Instance.TriggerEvent(nameOfEvent.OnPlayerDie.ToString());
     }
 
     public void TakeDamage(int _damage) {
-        throw new System.NotImplementedException();
+        currentLife -= _damage;
+        CheckLife();
     }
 }

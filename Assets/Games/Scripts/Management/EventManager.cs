@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class EventManager : MonoBehaviour
 {
+    #region SINGLETON
     private static EventManager instance;
     public static EventManager Instance {
         get {
@@ -16,11 +17,6 @@ public class EventManager : MonoBehaviour
 
     public static Dictionary<string, Action> eventDic = new Dictionary<string, Action>();
 
-    private void Awake() {
-        InitializeSingleton();
-    }
-
-    #region SINGLETON
     private void InitializeSingleton() {
         if (instance != null && instance != this) {
             Destroy(this.gameObject);
@@ -29,6 +25,19 @@ public class EventManager : MonoBehaviour
         }
     }
     #endregion
+
+    private enum eventToCreate {
+        OnPlayerDie,
+    }
+
+    private void Awake() {
+        InitializeSingleton();
+        CreateEventPrefab();
+    }
+
+    private void CreateEventPrefab() {
+        CreateEvent(eventToCreate.OnPlayerDie.ToString());
+    }
 
     public void CreateEvent(string _nameEvent) {
         if (eventDic.ContainsKey(_nameEvent))
