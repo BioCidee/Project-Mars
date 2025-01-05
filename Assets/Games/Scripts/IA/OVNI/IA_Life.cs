@@ -1,16 +1,20 @@
 using UnityEngine;
 
-public class IA_Life : MonoBehaviour
-{
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
+public class IA_Life : MonoBehaviour, I_Damageable {
+
+    [Header("Life Parameters")]
+    [SerializeField] private int maxLife;
+    private int minLife = 0;
+    private int currentLife = 0;
+
+    // Colision System
+    private Collider Collider;
+
+    private void Start() {
         
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+    public void TakeDamage(int _damage) {
+        throw new System.NotImplementedException();
     }
 }
