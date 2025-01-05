@@ -14,21 +14,24 @@ public class BulletLogic : MonoBehaviour
     private void Start() {
         rb = GetComponent<Rigidbody>();
 
-        transform.rotation = dir.rotation;
+        SetRotation();
     }
 
     private void Update() {
         Movement();
     }
 
-    private void SetDirection() {
+    private void SetRotation() {
         if (dir != null) {
-
+            transform.rotation = dir.rotation;
         } else {
             Debug.LogWarning("There is no direction for this bullet");
         }
     }
 
     private void Movement() {
+        if (rb != null) {
+            rb.linearVelocity = transform.forward * moveSpeed;
+        }
     }
 }
