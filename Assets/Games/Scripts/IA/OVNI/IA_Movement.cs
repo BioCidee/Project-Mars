@@ -61,8 +61,4 @@ public class IA_Movement : MonoBehaviour
                 return false;
             }
     }   
-
-    private void TakeRandomDir() {
-
-    }
 }

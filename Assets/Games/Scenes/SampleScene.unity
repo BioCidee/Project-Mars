@@ -131,6 +131,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: UFO
       objectReference: {fileID: 0}
+    - target: {fileID: 3316888169066081611, guid: 19b57a2de5da83a4da6407cc05faab1e, type: 3}
+      propertyPath: m_IsKinematic
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7999266966139370182, guid: 19b57a2de5da83a4da6407cc05faab1e, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.41505432

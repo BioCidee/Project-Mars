@@ -1,24 +1,37 @@
+using System.Collections;
 using UnityEngine;
 
 public class BulletLogic : MonoBehaviour
 {
     [Header("Movement Parameters")]
     [SerializeField] private int moveSpeed;
+    [SerializeField] private int damage;
     private Transform dir;
     private Rigidbody rb;
 
-    public BulletLogic(Transform _dir) {
-        dir = _dir;
-    }
+    [Header("Auto Death Parameters")]
+    [SerializeField] private float lifeTime;
 
     private void Start() {
         rb = GetComponent<Rigidbody>();
 
-        SetRotation();
+        StartCoroutine(AutoDeath());
     }
 
     private void Update() {
         Movement();
+    }
+
+    private void OnTriggerEnter(Collider collision) {
+        if(collision.gameObject.layer == 7) {
+            GameObject ufo = collision.gameObject;
+            I_Damageable life = ufo.GetComponent<I_Damageable>();
+            if (life != null) {
+                life.TakeDamage(damage);
+            } else {
+                Debug.LogWarning("There is no Damageale on this object");
+            }
+        }
     }
 
     private void SetRotation() {
@@ -31,7 +44,12 @@ public class BulletLogic : MonoBehaviour
 
     private void Movement() {
         if (rb != null) {
-            rb.linearVelocity = transform.forward * moveSpeed;
+            transform.position += transform.forward * moveSpeed * Time.deltaTime;
         }
+    }
+
+    private IEnumerator AutoDeath() {
+        yield return new WaitForSeconds(lifeTime);
+        Destroy(this.gameObject);
     }
 }
