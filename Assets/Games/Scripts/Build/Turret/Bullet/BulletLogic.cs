@@ -28,6 +28,7 @@ public class BulletLogic : MonoBehaviour
             I_Damageable life = ufo.GetComponent<I_Damageable>();
             if (life != null) {
                 life.TakeDamage(damage);
+                Destroy(this.gameObject);
             } else {
                 Debug.LogWarning("There is no Damageale on this object");
             }

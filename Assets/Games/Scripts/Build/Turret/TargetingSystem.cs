@@ -31,14 +31,16 @@ public class TargetingSystem : MonoBehaviour
     {
         if (target != null) {
             Rotation();
+        } else {
+            isTargetingReady = false;
         }
     }
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.layer == 7) { // LayerMask 7 = Ennemy
+        if (target = other.gameObject) { // LayerMask 7 = Ennemy
             Debug.Log("Object Enter : " + other.gameObject.name);
-            target = other.gameObject;
+            target = null;
         }
     }
 

@@ -5,6 +5,7 @@ public class IA_Movement : MonoBehaviour
 {
     // System
     [SerializeField] private IA_DetectionSystem _detectionSystem;
+    private GameManager gameManager;
 
     // Targets
     private GameObject target;
@@ -18,6 +19,8 @@ public class IA_Movement : MonoBehaviour
     private bool isReadyToFire = false;
 
     private void Start() {
+        gameManager = GameManager.Instance;
+
         listTarget = new List<GameObject>();
     }
 
