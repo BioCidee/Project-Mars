@@ -72,6 +72,16 @@ public class GameManager : MonoBehaviour
         return isShipSet;
     }
 
+    public Transform ReturnMainShipTransform() {
+        if (isShipSet) {
+            return shipTransform;
+        } else {
+            Debug.Log("Something try to get Main Ship Transform before her spawn");
+        }
+
+        return null;
+    }
+
     private void StartGame() {
 
     }
