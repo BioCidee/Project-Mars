@@ -15,6 +15,15 @@ public class ExplosionSystem : MonoBehaviour
 
         hit = Physics.SphereCastAll(transform.position, explosionRadius, Vector3.zero);
 
+        foreach (RaycastHit hit2 in hit) {
+            I_Damageable objectToDamage =  hit2.collider.gameObject.GetComponent<I_Damageable>();
+
+            if (objectToDamage != null) {
+                objectToDamage.TakeDamage(explosionDamage);
+            }
+        }
+
+        Destroy(this.gameObject);
     }
 
     private void OnDrawGizmos() {
