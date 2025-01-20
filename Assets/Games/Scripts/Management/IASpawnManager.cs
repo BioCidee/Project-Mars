@@ -14,6 +14,12 @@ public class IASpawnManager : MonoBehaviour
     [SerializeField] private float altitude;
     [SerializeField] private List<Transform> spawnPointList;
     private int currentSpawn = 0;
+    private bool isEnnemyCanSpawn = false;
+
+    private void Start() {
+        EventManager.Instance.SubscribreToEvent("OnEnnemyCanSpawn", StartSpawn);
+        EventManager.Instance.SubscribreToEvent("OnEnnemyCantSpawn", StartSpawn);
+    }
 
     private void Update() {
         
@@ -46,5 +52,13 @@ public class IASpawnManager : MonoBehaviour
 
     private Transform GetRandomSpawnPosition() {
         return null;
+    }
+
+    private void StartSpawn() {
+        isSpawnActive = true;
+    }
+
+    private void StopSpawn() {
+        isSpawnActive = false;
     }
 }
