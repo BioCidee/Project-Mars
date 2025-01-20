@@ -11,6 +11,9 @@ public class GameManager : MonoBehaviour
     private int width;
     private int length;
 
+    // Game Parameters
+    private bool canEnnemySpawn = false;
+
     #region SINGLETON
     private static GameManager instance;
     public static GameManager Instance {
@@ -83,10 +86,11 @@ public class GameManager : MonoBehaviour
     }
 
     private void StartGame() {
-
+        canEnnemySpawn = false;
     }
 
     private void RestartGame() {
+        canEnnemySpawn = true;
         isShipSet = false;
     }
 }

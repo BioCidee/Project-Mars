@@ -10,6 +10,8 @@ public class MainShip : MonoBehaviour
     private void Start() {
         OnShipIsCreate();
         SetParameters();
+
+        EventManager.Instance.SubscribreToEvent("OnGameStart", OnGameStart);
     }
 
     private void SetParameters() {
@@ -18,5 +20,9 @@ public class MainShip : MonoBehaviour
 
     private void OnShipIsCreate() {
         GameManager.Instance.SetShipParameters(this.transform);
+    }
+
+    private void OnGameStart() {
+        SetParameters();
     }
 }
