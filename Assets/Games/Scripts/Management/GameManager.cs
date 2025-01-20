@@ -2,6 +2,9 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    // System
+    private EventManager EventManager;
+
     // Ship
     private Transform shipTransform;
     private bool isShipSet = false;
@@ -43,10 +46,10 @@ public class GameManager : MonoBehaviour
             StartGame();
         }
 
-        EventManager eM = EventManager.Instance;
+        EventManager = EventManager.Instance;
 
-        eM.CreateEvent("OnGameStart");
-        eM.CreateEvent("OnGameEnd");
+        EventManager.CreateEvent("OnGameStart");
+        EventManager.CreateEvent("OnGameEnd");
     }
 
     public void SetShipParameters(Transform _shipTransform) {
@@ -85,8 +88,15 @@ public class GameManager : MonoBehaviour
         return null;
     }
 
+    public void StartEnnemySpawn() {
+        EventManager.TriggerEvent("OnEnnemyCanSpawn");
+        Debug.Log("TRIGGER EVENT ENNEMY SPAWN");
+    }
+
     private void StartGame() {
-        canEnnemySpawn = false;
+        if (isShipSet) {
+            canEnnemySpawn = false;
+        }
     }
 
     private void RestartGame() {

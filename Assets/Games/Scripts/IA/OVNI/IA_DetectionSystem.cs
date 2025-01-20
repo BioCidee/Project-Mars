@@ -18,8 +18,10 @@ public class IA_DetectionSystem : MonoBehaviour
     }
 
     private void Update() {
-        if (listObjectsDetected.Count != 0) {
+        if (listObjectsDetected.Count > 0) {
             SelectionThreat();
+        } else {
+
         }
     }
 

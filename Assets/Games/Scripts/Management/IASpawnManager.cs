@@ -18,11 +18,11 @@ public class IASpawnManager : MonoBehaviour
 
     private void Start() {
         EventManager.Instance.SubscribreToEvent("OnEnnemyCanSpawn", StartSpawn);
-        EventManager.Instance.SubscribreToEvent("OnEnnemyCantSpawn", StartSpawn);
+        EventManager.Instance.SubscribreToEvent("OnEnnemyCantSpawn", StopSpawn);
     }
 
     private void Update() {
-        
+        SpawnSystem();
     }
 
     private void SpawnSystem() {
@@ -35,7 +35,7 @@ public class IASpawnManager : MonoBehaviour
         if(spawnTimer >= spawnRate) {
             spawnTimer = 0;
 
-            //SpawnEnnemy()
+            SpawnEnnemy(GetRandomEnnemy(), GetRandomSpawnPosition());
         } else {
             spawnTimer += Time.deltaTime;
         }
@@ -47,18 +47,30 @@ public class IASpawnManager : MonoBehaviour
     }
 
     private GameObject GetRandomEnnemy() {
-        return null;
+        if (ennemyList.Count <= 0)
+            Debug.LogError("There is no ennemy in the ennemy list");
+
+        int random = Random.Range(0, ennemyList.Count);
+
+        return ennemyList[random];
     }
 
     private Transform GetRandomSpawnPosition() {
-        return null;
+        if (spawnPointList.Count <= 0)
+            Debug.LogError("There is no spawn point for the Ennemy , in spawnPointList");
+
+        int random = Random.Range(0, spawnPointList.Count);
+
+        return spawnPointList[random];
     }
 
     private void StartSpawn() {
         isSpawnActive = true;
+        Debug.Log("isSpawnActive on true");
     }
 
     private void StopSpawn() {
         isSpawnActive = false;
+        Debug.Log("isSpawnActive on false");
     }
 }
