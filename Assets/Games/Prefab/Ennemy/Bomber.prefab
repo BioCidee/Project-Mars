@@ -40,11 +40,12 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1225473095458001152}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f84b433eb73bba047ba2bd9fe1943b38, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  movement: {fileID: 0}
   bomb: {fileID: 6821124183194756505, guid: 389b2a87d05b6b441813899ada4b3816, type: 3}
   dropPosition: {fileID: 4443018174505846181}
   timeBetweenStrikes: 2

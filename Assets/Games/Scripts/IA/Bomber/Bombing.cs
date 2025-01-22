@@ -4,6 +4,8 @@ using UnityEngine.Events;
 public class Bombing : MonoBehaviour
 {
     // Parameters
+    [SerializeField] private IA_Movement movement;
+
     [Header("Bombing Parameters")]
     [SerializeField] private GameObject bomb;
     [SerializeField] private Transform dropPosition;
@@ -11,17 +13,11 @@ public class Bombing : MonoBehaviour
     [SerializeField] private bool readyToStrike = false;
     private float strikeTimer = 0;
 
-    // Event
-    [SerializeField] private UnityEvent OnShipIsReadyToFire;
-
     // IDEA FOR ADD
     // - Make number bomb drop on a variable
 
     private void Start() {
-        if(OnShipIsReadyToFire == null)
-            OnShipIsReadyToFire = new UnityEvent();
-
-        OnShipIsReadyToFire.AddListener(SetReadyToFire);
+       
     }
 
     private void Update() {
@@ -30,10 +26,12 @@ public class Bombing : MonoBehaviour
         } else {
             strikeTimer = 0;
         }
+
+        readyToStrike = movement.ReturnIfIsReadyToFire();
     }
 
     private void TimerForStrike() {
-        if (strikeTimer <= 0) {
+        if (strikeTimer > 0) {
             strikeTimer -= Time.deltaTime;
         } else {
             strikeTimer = timeBetweenStrikes;
@@ -46,7 +44,7 @@ public class Bombing : MonoBehaviour
         bomb.transform.position = dropPosition.position;
     }
 
-    private void SetReadyToFire() {
-        readyToStrike = !readyToStrike;
+    public void SetReadyToFire(bool _newStat) {
+        readyToStrike = _newStat;
     }
 }
