@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class IA_Movement : MonoBehaviour
 {
@@ -7,6 +8,7 @@ public class IA_Movement : MonoBehaviour
     [SerializeField] private IA_DetectionSystem _detectionSystem;
     private Transform mainShipTransform;
     private GameManager gameManager;
+    [SerializeField] private UnityEvent OnShipIsReadyToFire;
 
     // Targets
     private GameObject target;
@@ -54,8 +56,10 @@ public class IA_Movement : MonoBehaviour
             Vector3 dir = (targetPosition - transform.position).normalized;
             transform.position += dir * moveSpeed * Time.deltaTime;
             isReadyToFire = false;
+            OnShipIsReadyToFire?.Invoke();
         } else {
             isReadyToFire = true;
+            OnShipIsReadyToFire?.Invoke();
         }
     }
 
