@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -16,6 +17,13 @@ public class GameManager : MonoBehaviour
 
     // Game Parameters
     private bool canEnnemySpawn = false;
+
+    // Name of Event
+    private enum nameOfEvent {
+        OnGameStart,
+        OnGameEnd,
+        OnPlayerDie,
+    }
 
     #region SINGLETON
     private static GameManager instance;
@@ -48,8 +56,10 @@ public class GameManager : MonoBehaviour
 
         EventManager = EventManager.Instance;
 
-        EventManager.CreateEvent("OnGameStart");
-        EventManager.CreateEvent("OnGameEnd");
+        EventManager.CreateEvent(nameOfEvent.OnGameStart.ToString());
+        EventManager.CreateEvent(nameOfEvent.OnGameEnd.ToString()); // Utile ? 
+
+        EventManager.SubscribreToEvent(nameOfEvent.OnPlayerDie.ToString(), OnMainShipDie);
     }
 
     public void SetShipParameters(Transform _shipTransform) {
@@ -102,5 +112,9 @@ public class GameManager : MonoBehaviour
     private void RestartGame() {
         canEnnemySpawn = true;
         isShipSet = false;
+    }
+
+    private void OnMainShipDie() {
+        SceneManager.LoadScene("GameOverScene");
     }
 }
