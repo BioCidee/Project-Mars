@@ -22,8 +22,11 @@ public class IA_Movement : MonoBehaviour
 
     private void Start() {
         gameManager = GameManager.Instance;
-        mainShipTransform = gameManager.ReturnMainShipTransform();
 
+        if(gameManager.ReturnMainShipTransform()!= null){
+            mainShipTransform = gameManager.ReturnMainShipTransform();
+        }
+        
         listTarget = new List<GameObject>();
     }
 
@@ -46,17 +49,21 @@ public class IA_Movement : MonoBehaviour
     }
 
     private void GoToMainShip() {
-        Vector3 targetPosition = new Vector3(mainShipTransform.position.x, fixedHeight, mainShipTransform.position.z);
+        if (mainShipTransform != null) {
+            Vector3 targetPosition = new Vector3(mainShipTransform.position.x, fixedHeight, mainShipTransform.position.z);
 
-        float distance = Vector3.Distance(new Vector3(transform.position.x, fixedHeight, transform.position.z),
-                                          new Vector3(targetPosition.x, fixedHeight, targetPosition.z));
+            float distance = Vector3.Distance(new Vector3(transform.position.x, fixedHeight, transform.position.z),
+                                              new Vector3(targetPosition.x, fixedHeight, targetPosition.z));
 
-        if (distance > stopDistance) {
-            Vector3 dir = (targetPosition - transform.position).normalized;
-            transform.position += dir * moveSpeed * Time.deltaTime;
-            isReadyToFire = false;
+            if (distance > stopDistance) {
+                Vector3 dir = (targetPosition - transform.position).normalized;
+                transform.position += dir * moveSpeed * Time.deltaTime;
+                isReadyToFire = false;
+            } else {
+                isReadyToFire = true;
+            }
         } else {
-            isReadyToFire = true;
+            Debug.LogWarning("There is no main ship ! The UFO cant go anywhere");
         }
     }
 

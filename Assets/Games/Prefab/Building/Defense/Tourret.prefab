@@ -211,7 +211,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _detectionSystem: {fileID: 7940219722902246459}
-  shootSpeed: 2
+  shootSpeed: 0.1
   bullet: {fileID: 2772695554438577609, guid: 1dadff994c99f9b4781b05c61b8f810b, type: 3}
   shootPosition: {fileID: 2338493390378363938}
 --- !u!1 &5472940053609228565
