@@ -20,12 +20,12 @@ public class MainMenu : MonoBehaviour
         optionPart.SetActive(true);
     }
 
-    public void OnCreditButtonClick() {
-        SceneManager.LoadScene(nameOfScene.GameScene.ToString());
-    }
-
     public void CloseOptionPart() {
         optionPart.SetActive(false);
+    }
+
+    public void OnCreditButtonClick() {
+        SceneManager.LoadScene(nameOfScene.GameScene.ToString());
     }
 
     public void OnLeaveButtonClick() {
