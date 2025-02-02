@@ -44,11 +44,9 @@ public class IA_DetectionSystem : MonoBehaviour
 
     private void AddThreat(GameObject _potentialThreat) {
         if (listThreat.Contains(_potentialThreat)) {
-            Debug.Log("Threat already in list");
             return;
         } else {
             listThreat.Add(_potentialThreat);
-            Debug.Log("Add threat");
         }
     }
 

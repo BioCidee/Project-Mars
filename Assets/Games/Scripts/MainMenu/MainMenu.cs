@@ -17,10 +17,16 @@ public class MainMenu : MonoBehaviour
         SceneManager.LoadScene(nameOfScene.GameScene.ToString());
     }
     public void OpenOptionPart() {
+        if (optionPart == null)
+            Debug.LogWarning("There is no Option part, but you try to open it");
+
         optionPart.SetActive(true);
     }
 
     public void CloseOptionPart() {
+        if (optionPart == null)
+            Debug.LogWarning("There is no Option part, but you try to close it");
+
         optionPart.SetActive(false);
     }
 
@@ -31,5 +37,9 @@ public class MainMenu : MonoBehaviour
     public void OnLeaveButtonClick() {
         // Peut être faire une page en mode "etes vous sur ? "
         Application.Quit();
+    }
+
+    public void OnTryAgainButtonIsClick() {
+        SceneManager.LoadScene(nameOfScene.GameScene.ToString());
     }
 }

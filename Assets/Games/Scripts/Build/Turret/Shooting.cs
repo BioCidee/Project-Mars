@@ -28,9 +28,7 @@ public class Shooting : MonoBehaviour
         newBullet.transform.position = shootPosition.transform.position;
         newBullet.transform.rotation = shootPosition.transform.rotation;
 
-
-        BulletLogic bLogic = newBullet.GetComponent<BulletLogic>();
-
+        //BulletLogic bLogic = newBullet.GetComponent<BulletLogic>();
     }
 
     private void ShootSystem() {
