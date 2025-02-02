@@ -38,10 +38,13 @@ public class TargetingSystem : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if (target = other.gameObject) { // LayerMask 7 = Ennemy
+        // Les ennemis ont tendance à sortir visiblement trop facilement de la zonne de detection et donc ne sont plus en target, limitant le jeu 
+        // a vérifier ou améliorer si possible.
+
+        /*if (target = other.gameObject) { // LayerMask 7 = Ennemy
             Debug.Log("Object Enter : " + other.gameObject.name);
             target = null;
-        }
+        }*/
     }
 
     private void OnTriggerEnter(Collider other)

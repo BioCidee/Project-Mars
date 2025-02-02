@@ -57,11 +57,10 @@ public class GameManager : MonoBehaviour
         EventManager = EventManager.Instance;
 
         EventManager.CreateEvent(nameOfEvent.OnGameStart.ToString());
-        EventManager.CreateEvent(nameOfEvent.OnGameEnd.ToString()); // Utile ? 
-
-        EventManager.SubscribreToEvent(nameOfEvent.OnPlayerDie.ToString(), OnMainShipDie);
+        EventManager.SubscribreToEvent(nameOfEvent.OnPlayerDie.ToString(), GameEnd);
     }
 
+    #region ShipParameters
     public void SetShipParameters(Transform _shipTransform) {
         if (shipNumber == 0 || isShipSet == false) {
             shipTransform = _shipTransform;
@@ -83,7 +82,9 @@ public class GameManager : MonoBehaviour
         _width = width;
         _length = length;
     }
+    #endregion
 
+    #region ShipParameters
     public bool ReturnMainShipStatue() {
         return isShipSet;
     }
@@ -97,12 +98,14 @@ public class GameManager : MonoBehaviour
 
         return null;
     }
+    #endregion
 
     public void StartEnnemySpawn() {
         EventManager.TriggerEvent("OnEnnemyCanSpawn");
         Debug.Log("TRIGGER EVENT ENNEMY SPAWN");
     }
 
+    #region GameCommand
     private void StartGame() {
         if (isShipSet) {
             canEnnemySpawn = false;
@@ -117,4 +120,10 @@ public class GameManager : MonoBehaviour
     private void OnMainShipDie() {
         SceneManager.LoadScene("GameOverScene");
     }
+
+    private void GameEnd() {
+        // TODO : Step Before game end
+        OnMainShipDie();
+    }
+    #endregion
 }
