@@ -2,15 +2,39 @@ using UnityEngine;
 
 public class StateMachine : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
+    private BasicState currentState;
+
+    private void Start() {
+        currentState = GetInitialState();   
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+    private void Update() {
+       if (currentState != null)
+            currentState.OnLogicUpdate();
+    }
+
+    private void LateUpdate() {
+        if(currentState != null)
+            currentState.OnPhysicsUpdate();
+    }
+
+    protected virtual BasicState GetInitialState() {
+        return null;
+    }
+
+    public void ChangeState(BasicState state) {
+        if (currentState != state) {
+            if (currentState != null) {
+                currentState.OnExit();
+            }
+
+            currentState = state;
+            currentState.OnStart();
+        }
+    }
+
+    private void OnGUI() {
+        string content = currentState != null ? currentState.ToString() : "(No current string";
+        GUILayout.Label($"<color='black><size=40>{content}</size></color>");
     }
 }
