@@ -6,6 +6,9 @@ public class StateMachine : MonoBehaviour
 
     private void Start() {
         currentState = GetInitialState();   
+
+        if(currentState != null ) 
+            currentState.OnStart();
     }
 
     private void Update() {
