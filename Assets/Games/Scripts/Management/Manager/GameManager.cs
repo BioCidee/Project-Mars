@@ -82,9 +82,7 @@ public class GameManager : MonoBehaviour
         _width = width;
         _length = length;
     }
-    #endregion
 
-    #region ShipParameters
     public bool ReturnMainShipStatue() {
         return isShipSet;
     }

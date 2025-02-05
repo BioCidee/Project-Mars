@@ -2,19 +2,41 @@ using UnityEngine;
 
 public class S_ShipTransformChoice : BasicState
 {
-    public S_ShipTransformChoice(string _name, string _description, StateMachine _stateMachine) : base(_name, _description, _stateMachine) {
+    public S_ShipTransformChoice(string _name, string _description, SM_Game _stateMachine) : base(_name, _description, _stateMachine) {
+        myStateMachine = _stateMachine;
+    }
+
+    private SM_Game myCurrentSM;
+
+    private GameManager GameManager;
+    private bool isShipSet;
+    private bool isStepComplete;
+
+
+    public override void OnStart() {
+        myCurrentSM = (SM_Game)myStateMachine;  
+
+        Debug.Log($"The state of {myName} as just started");
+        GameManager = myCurrentSM.GetGameManager();
+    }
+
+    public override void OnLogicUpdate() {
+        isShipSet = GameManager.ReturnMainShipStatue();
+
+        if (isShipSet) {
+            isStepComplete = true;
+        }
+
+        if (isStepComplete) {
+            myStateMachine.ChangeState(myCurrentSM.S_Begining);
+        }
+    }
+
+    public override void OnPhysicsUpdate() {
 
     }
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+    public override void OnExit() {
+        Debug.Log($"The state of {myName} as just ended");
     }
 }

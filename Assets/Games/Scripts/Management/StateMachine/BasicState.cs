@@ -1,18 +1,18 @@
 using UnityEngine;
 
-public class BasicState : MonoBehaviour
+public class BasicState 
 {
     //System
-    private StateMachine myStateMachine;
+    protected StateMachine myStateMachine;
 
     // Parameters
-    private string myName;
-    private string myDescription;
+    protected string myName;
+    protected string myDescription;
 
     public BasicState(string _name, string _description, StateMachine _stateMachine) {
         myName = _name;
         myDescription = _description;
-        myStateMachine = _stateMachine;
+        myStateMachine =_stateMachine;
     }
 
     public virtual void OnStart() {
@@ -20,7 +20,6 @@ public class BasicState : MonoBehaviour
     }
 
     public virtual void OnLogicUpdate() {
-    
     }
     
     public virtual void OnPhysicsUpdate() {
