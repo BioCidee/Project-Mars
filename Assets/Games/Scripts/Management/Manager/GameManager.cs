@@ -69,20 +69,6 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void SetMapParameters(int _width, int _height) {
-        width = _width; length = _height;
-    }
-
-    public void ReturnMapParameters(out int _width, out int _length) {
-        _width = width;
-        _length = length;
-    }
-
-    public void ReturnMapSize(out int _width, out int _length) {
-        _width = width;
-        _length = length;
-    }
-
     public bool ReturnMainShipStatue() {
         return isShipSet;
     }
@@ -95,6 +81,22 @@ public class GameManager : MonoBehaviour
         }
 
         return null;
+    }
+    #endregion
+
+    #region MapParameters
+    public void SetMapParameters(int _width, int _height) {
+        width = _width; length = _height;
+    }
+
+    public void ReturnMapParameters(out int _width, out int _length) {
+        _width = width;
+        _length = length;
+    }
+
+    public void ReturnMapSize(out int _width, out int _length) {
+        _width = width;
+        _length = length;
     }
     #endregion
 
