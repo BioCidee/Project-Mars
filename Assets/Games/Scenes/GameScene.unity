@@ -171,14 +171,15 @@ MonoBehaviour:
   depth: 0
   offset: 0
   pointZero: {fileID: 1789874700}
-  groundParent: {fileID: 198656274}
-  ground: {fileID: 9188191569707869362, guid: 035ef9aecc7f90e4b93b20c7cbf4af69, type: 3}
-  groundMining: {fileID: 3771438727758540059, guid: adc5eb16d51dbb34296949da8445ca58, type: 3}
   minableBlockCount: 0
-  maxMinableBlockCount: 2
+  maxMinableBlockCount: 20
   minableBlockChance: 20
   scale: 0.2
   maxHeight: 5
+  groundParent: {fileID: 198656274}
+  ground: {fileID: 9188191569707869362, guid: 035ef9aecc7f90e4b93b20c7cbf4af69, type: 3}
+  groundMining: {fileID: 3771438727758540059, guid: adc5eb16d51dbb34296949da8445ca58, type: 3}
+  maxChance: 500
 --- !u!1 &83096734
 GameObject:
   m_ObjectHideFlags: 0
@@ -1606,8 +1607,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.0000074208, y: -0.0000038147}
-  m_SizeDelta: {x: 1557.353, y: 213.8464}
+  m_AnchoredPosition: {x: 7.5, y: -3.8}
+  m_SizeDelta: {x: 1560, y: 215}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1129951399
 MonoBehaviour:

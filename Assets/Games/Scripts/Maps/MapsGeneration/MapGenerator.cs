@@ -3,21 +3,26 @@ using UnityEngine;
 
 public class MapGenerator : MonoBehaviour
 {
-    //[SerializeField] private int height;
+    [Header("Map Generation Parameters")]
     [SerializeField] private int customSeed = 0;
     [SerializeField] private int length;
     [SerializeField] private int width;
     [SerializeField] private int depth;
     [SerializeField] private int offset;
     [SerializeField] private Transform pointZero;
-    [SerializeField] private GameObject groundParent;
-    [SerializeField] private GameObject ground;
-    [SerializeField] private GameObject groundMining;
     [SerializeField] private int minableBlockCount;
     [SerializeField] private int maxMinableBlockCount = 10;
     [SerializeField] private int minableBlockChance = 5;
     [SerializeField] private float scale = 0.1f;
     [SerializeField] private int maxHeight;
+
+    [Header("Block for map")]
+    [SerializeField] private GameObject groundParent;
+    [SerializeField] private GameObject ground;
+    [SerializeField] private GameObject groundMining;
+
+    [Header("Spacial Block Generation")]
+    [SerializeField] private int maxChance;
 
     private List<GameObject> groundList = new List<GameObject>();
 
@@ -71,20 +76,13 @@ public class MapGenerator : MonoBehaviour
             GameObject go = ground;
 
               if (h + 1 >= height && minableBlockCount < maxMinableBlockCount) {
-                      int chance = Random.Range(0, 300);
-                      if (chance >= (minableBlockChance)) {
+                int chance = Random.Range(0, maxChance); // Chance for spawn
+
+                if (chance < minableBlockChance) {
                           go = groundMining;
                           minableBlockCount++;
-                      }
-              }
-
-           /* if (h + 1 >= height && minableBlockCount < minableBlockChance) {
-                int chance = Random.Range(0, 1000);
-                if (chance < minableBlockChance) {
-                    go = groundMining;
-                    minableBlockCount++;
                 }
-            }*/
+              }
 
             GameObject newGroundHeight = Instantiate(go);
             newGroundHeight.transform.parent = currentGround.transform;
