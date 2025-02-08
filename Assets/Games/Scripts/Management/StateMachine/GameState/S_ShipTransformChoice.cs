@@ -18,6 +18,8 @@ public class S_ShipTransformChoice : BasicState
 
         Debug.Log($"The state of {myName} as just started");
         GameManager = myCurrentSM.GetGameManager();
+
+        DisplayTextSystem.instance.DisplayText("Please ! Set your MainShip for launch the game !", 80, 6);
     }
 
     public override void OnLogicUpdate() {
