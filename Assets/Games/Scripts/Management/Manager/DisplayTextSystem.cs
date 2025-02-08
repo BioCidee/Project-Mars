@@ -66,10 +66,27 @@ public class DisplayTextSystem : MonoBehaviour
         StartCoroutine(TextDelay(delay));
     }
 
-    public void DisplayText(string _text, int size, float delay, Color _myColor) {
+    public void DisplayTextWithColor(string _text, int size, float delay, Color _myColor) {
         textGO.SetActive(true);
         paragraph.text = _text;
         paragraph.fontSize = size;
+        paragraph.color = _myColor;
+        StartCoroutine(TextDelay(delay));
+    }
+
+    public void DisplayTextWithColor(string _text, float delay, Color _myColor) {
+        textGO.SetActive(true);
+        paragraph.text = _text;
+        paragraph.color = _myColor;
+        StartCoroutine(TextDelay(delay));
+    }
+
+    public void DisplayTextWithColor(string _text, int size, float delay, Vector2 textPosition, Color _myColor) {
+        textGO.SetActive(true);
+        paragraph.text = _text;
+        paragraph.fontSize = size;
+        paragraph.color = _myColor;
+        paragraph.transform.position = textPosition;
         StartCoroutine(TextDelay(delay));
     }
 
@@ -84,6 +101,7 @@ public class DisplayTextSystem : MonoBehaviour
     private IEnumerator TextDelay(float delay) {
         float elapsedTime = delay;
         Color color = paragraph.color;
+        yield return new WaitForSeconds(delay);
 
         while (elapsedTime > 0) {
             yield return new WaitForSeconds(0.01f);

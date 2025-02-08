@@ -68,23 +68,23 @@ public class MapGenerator : MonoBehaviour
         height--;
 
         for (int h = 0; h < height; h++) {
-
             GameObject go = ground;
-            if (h + 1 >= height && minableBlockCount < maxMinableBlockCount) {
-                if (minableBlockCount != 0) {
-                    int chance = Random.Range(0, 1);
 
-                    if (chance >= (minableBlockChance / 100)) {
-                        go = groundMining;
-                        minableBlockCount++;
-                    } else {
-                        go = ground;
-                    }
-                } else {
+              if (h + 1 >= height && minableBlockCount < maxMinableBlockCount) {
+                      int chance = Random.Range(0, 300);
+                      if (chance >= (minableBlockChance)) {
+                          go = groundMining;
+                          minableBlockCount++;
+                      }
+              }
+
+           /* if (h + 1 >= height && minableBlockCount < minableBlockChance) {
+                int chance = Random.Range(0, 1000);
+                if (chance < minableBlockChance) {
                     go = groundMining;
                     minableBlockCount++;
                 }
-            }
+            }*/
 
             GameObject newGroundHeight = Instantiate(go);
             newGroundHeight.transform.parent = currentGround.transform;

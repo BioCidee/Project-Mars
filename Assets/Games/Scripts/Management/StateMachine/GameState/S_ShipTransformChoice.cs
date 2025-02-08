@@ -12,6 +12,10 @@ public class S_ShipTransformChoice : BasicState
     private bool isShipSet;
     private bool isStepComplete;
 
+    // Text Display Parameters
+    private string messageForSetMainShip = "Please ! Set your MainShip for launch the game !";
+    private int textSize = 80;
+    private float textDelay = 4;
 
     public override void OnStart() {
         myCurrentSM = (SM_Game)myStateMachine;  
@@ -19,19 +23,13 @@ public class S_ShipTransformChoice : BasicState
         Debug.Log($"The state of {myName} as just started");
         GameManager = myCurrentSM.GetGameManager();
 
-        DisplayTextSystem.instance.DisplayText("Please ! Set your MainShip for launch the game !", 80, 6);
+        DisplayTextSystem.instance.DisplayText(messageForSetMainShip, textSize, textDelay);
     }
 
     public override void OnLogicUpdate() {
         isShipSet = GameManager.ReturnMainShipStatue();
 
-        if (isShipSet) {
-            isStepComplete = true;
-        }
-
-        if (isStepComplete) {
-            myStateMachine.ChangeState(myCurrentSM.S_Begining);
-        }
+        IsStateComplete();
     }
 
     public override void OnPhysicsUpdate() {
@@ -40,5 +38,15 @@ public class S_ShipTransformChoice : BasicState
 
     public override void OnExit() {
         Debug.Log($"The state of {myName} as just ended");
+    }
+
+    private void IsStateComplete() {
+        if (isShipSet) {
+            isStepComplete = true;
+        }
+
+        if (isStepComplete) {
+            myStateMachine.ChangeState(myCurrentSM.S_Begining);
+        }
     }
 }
