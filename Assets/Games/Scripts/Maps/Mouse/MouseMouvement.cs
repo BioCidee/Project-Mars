@@ -2,52 +2,51 @@ using UnityEngine;
 
 public class MouseMouvement : MonoBehaviour
 {
-    [Header("Maps Parameters")]
-    [SerializeField] private int mapLenght;
-    [SerializeField] private int mapWidth;
-    [SerializeField] private int mapHeight;
-    private Vector3 mapCenter;
+    [Header("Main Camera Parameters")]
+    [SerializeField] private Camera mainCamera;
+    [SerializeField] private float cameraMoveSpeed;
+    [SerializeField] private float cameraDistance;
 
-    [Header("Cirle Pivot")]
-    [SerializeField] private float circleRadius;
-    [SerializeField] private Transform pivot; // GameObject Pivot ( Empty ) 
-    [SerializeField] private Transform cameraTransform; // Camera Reference
-
-    [Header("Rotation Setting")]
-    [SerializeField] private float rotationSpeed = 10f; // Rotation speed
+    private Vector3 pointZero;
+    private Vector3 previousPosition;
 
     private void Start() {
-        GameManager.Instance.ReturnMapSize(out mapWidth, out mapLenght);
-
-        Debug.Log(mapWidth + mapLenght);
-
-        SetMapCenter();
-
-        SetCircleRadius();
-
-        SetCameraPosition();
-    }
-
-    private void LateUpdate() {
-        GameManager.Instance.ReturnMapSize(out mapWidth, out mapLenght);
-        SetMapCenter();
+        SetPointZero();
     }
 
     private void Update() {
-        pivot.Rotate(0, rotationSpeed * Time.deltaTime, 0);
+        SetCameraDistance();
+
+        if (Input.GetMouseButtonDown(0)) {
+            previousPosition = mainCamera.ScreenToViewportPoint(Input.mousePosition);
+        }
+
+        if (Input.GetMouseButton(0)) {
+            Vector3 direction = previousPosition - mainCamera.ScreenToViewportPoint(Input.mousePosition);
+
+            mainCamera.transform.position = pointZero;
+
+            mainCamera.transform.Rotate(new Vector3(cameraMoveSpeed, 0, 0), direction.y * 180);
+            mainCamera.transform.Rotate(new Vector3(0,cameraMoveSpeed,0), -direction.x * 180, Space.World);
+            mainCamera.transform.Translate(new Vector3(0,0,-50)); 
+
+            previousPosition = mainCamera.ScreenToViewportPoint(Input.mousePosition);  
+        }
     }
 
-    private void SetMapCenter() {
-        mapCenter = new Vector3((float)(mapWidth * 0.5f), mapHeight, (float)(mapLenght * 0.5f));
-        pivot.position = mapCenter;
+    private void SetCameraDistance() {
+        float scrool = Input.GetAxis("Mouse ScrollWheel");
+        cameraDistance += scrool * 5f; // 
+        cameraDistance = Mathf.Clamp(cameraDistance,0, 50); // Limit the camera distance
     }
 
-    private void SetCircleRadius() {
-        circleRadius = Mathf.Max(mapWidth, mapLenght) * 0.6f;
-    }
 
-    private void SetCameraPosition() {
-        cameraTransform.localPosition = new Vector3(0, circleRadius * 0.5f, -circleRadius);
-        cameraTransform.LookAt(pivot.position);
+    private void SetPointZero() { // Set the point for the camera rotate
+        int width;
+        int lenght;
+
+        GameManager.Instance.ReturnMapSize(out width, out lenght);
+
+        pointZero = new Vector3((float)(width * 0.5), 0, (float)(lenght * 0.5));
     }
 }
