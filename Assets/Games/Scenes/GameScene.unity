@@ -2400,13 +2400,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aedc43ef68bd274468b5cbe904f500da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mapLenght: 0
-  mapWidth: 0
-  mapHeight: 0
-  circleRadius: 0
-  pivot: {fileID: 1579933697}
-  cameraTransform: {fileID: 330585546}
-  rotationSpeed: 10
+  mainCamera: {fileID: 330585545}
+  cameraMoveSpeed: 1
+  cameraDistance: -20
 --- !u!4 &1579933697
 Transform:
   m_ObjectHideFlags: 0
