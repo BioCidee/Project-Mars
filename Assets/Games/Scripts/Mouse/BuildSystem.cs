@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class MouseLogic : MonoBehaviour
+public class BuildSystem : MonoBehaviour
 {
     //System
     [SerializeField] private ResourceManagement rM;
@@ -25,7 +25,6 @@ public class MouseLogic : MonoBehaviour
 
     private void Update() {
         GetBlocAim();
-
 
         if (lastGameObjectHit != null )
             if (Input.GetMouseButtonDown(0) && isOnConstructionMode) {
@@ -67,9 +66,10 @@ public class MouseLogic : MonoBehaviour
 
             if (gL != null) {
                 if (gL.IsGroundFree() == true) {
-                        if (!GameManager.Instance.ReturnMainShipStatue()) {
+                        if (!GameManager.Instance.ReturnMainShipStatue()) { // Check if MainShip didnt already exist
                             gL.SetObjectOnTop(objectToBuild);
                             isMainShipIsBuild = true;
+                            RemoveHighlight();
                         } else {
                             isOnConstructionMode = false;
                             objectToBuild = null;
@@ -90,10 +90,13 @@ public class MouseLogic : MonoBehaviour
                 if (gL.IsGroundFree() == true){
                     if (rM.CanBuy(priceObjToBuild)){
                         gL.SetObjectOnTop(objectToBuild);
+                        rM.OnObjectBuild(priceObjToBuild);
+                        RemoveHighlight();
                     } else {
                     }
                 } else {
                     isOnConstructionMode = true;
+                    RemoveHighlight();
                 }
             }
         }

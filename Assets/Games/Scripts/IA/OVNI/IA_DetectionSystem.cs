@@ -31,13 +31,17 @@ public class IA_DetectionSystem : MonoBehaviour
 
     private void SelectionThreat() {
         for(int i = listObjectsDetected.Count - 1; i >= 0; i--) {
-            if (listObjectsDetected[i].gameObject.layer == 8) {
-                Debug.Log("Start Thread Adding");
-                AddThreat(listObjectsDetected[i]);
-                _mov.SetThreatList(ReturnListThreat());
+            if(listObjectsDetected[i] != null) {
+                if (listObjectsDetected[i].gameObject.layer == 8) {
+                    Debug.Log("Start Thread Adding");
+                    AddThreat(listObjectsDetected[i]);
+                    _mov.SetThreatList(ReturnListThreat());
+                } else {
+                    listObjectsDetected.RemoveAt(i);
+                    Debug.Log("Detection Removed");
+                }
             } else {
-                listObjectsDetected.RemoveAt(i);
-                Debug.Log("Detection Removed");
+                listObjectsDetected.Remove(listObjectsDetected[i]);
             }
         }
     }

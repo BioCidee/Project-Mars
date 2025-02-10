@@ -285,8 +285,8 @@ MonoBehaviour:
     m_Bits: 128
   Cannon: {fileID: 7168223919605779167}
   target: {fileID: 0}
-  speedRotation: 22
-  angleTolerated: 5
+  speedRotation: 24
+  angleTolerated: 3
 --- !u!1 &5505003180039581082
 GameObject:
   m_ObjectHideFlags: 0

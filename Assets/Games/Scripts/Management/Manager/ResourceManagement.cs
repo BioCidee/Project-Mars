@@ -3,8 +3,12 @@ using UnityEngine;
 
 public class ResourceManagement : MonoBehaviour
 {
+    [Header("Ressource Parameters")]
     [SerializeField] private int oilResource;
+
+    [Header("UI Parameters")]
     [SerializeField] private Ui_ResourceManager ui;
+
     private Action produceOil;
     private enum nameEvent {
         makeOil,
@@ -12,19 +16,24 @@ public class ResourceManagement : MonoBehaviour
 
     private void Start() {
         EventManager eV = EventManager.Instance;
+
         eV.CreateEvent(nameEvent.makeOil.ToString());
         eV.SubscribreToEvent(nameEvent.makeOil.ToString(), MakeOil);
+
+        InitializeGameBegening();
     }
+
+    //Public Fonction
 
     public bool CanBuy(int price)
     {
-        if (price <= oilResource) {
-            return true;
-        }
-        else
-        {
-            return false;
-        }
+        bool canbuild = price <= oilResource ? true : false;
+        return canbuild;
+    }
+
+    public void OnObjectBuild(int _price) {
+        oilResource -= _price;
+        UpdateFuelUi();
     }
 
     public void MakeOil() {
@@ -32,7 +41,14 @@ public class ResourceManagement : MonoBehaviour
         UpdateFuelUi();
     }
 
+    // Private Fonction
+
     private void UpdateFuelUi() {
         ui.UpdateCurrentFuel(oilResource);
+    }
+
+    private void InitializeGameBegening() {
+        oilResource += 10; 
+        UpdateFuelUi();
     }
 }
