@@ -4875,8 +4875,9 @@ GameObject:
   - component: {fileID: 4853944916123545952}
   - component: {fileID: 1876250727578744049}
   - component: {fileID: 4059950497616068046}
-  - component: {fileID: 5128833856281850379}
   - component: {fileID: 2577398491668146369}
+  - component: {fileID: 366020455304873712}
+  - component: {fileID: 5128833856281850379}
   m_Layer: 8
   m_Name: Excavator
   m_TagString: Untagged
@@ -4930,6 +4931,33 @@ MonoBehaviour:
   layerGroundMining:
     serializedVersion: 2
     m_Bits: 64
+--- !u!114 &2577398491668146369
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 968691698374137964}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c57a18a5fd2616b46acf2cda19b286cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  growSpeed: 2
+--- !u!114 &366020455304873712
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 968691698374137964}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2be3c7396e87b114e83a1d7b26dca703, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxLife: 100
+  currentLife: 0
 --- !u!65 &5128833856281850379
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4951,19 +4979,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1.9945512, z: 1}
   m_Center: {x: 0, y: 1, z: 0}
---- !u!114 &2577398491668146369
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 968691698374137964}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c57a18a5fd2616b46acf2cda19b286cb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  growSpeed: 2
 --- !u!1 &1365468989086040645
 GameObject:
   m_ObjectHideFlags: 0
