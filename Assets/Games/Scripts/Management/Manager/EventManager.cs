@@ -30,6 +30,7 @@ public class EventManager : MonoBehaviour
         OnPlayerDie,
         OnEnnemyCanSpawn,
         OnEnnemyCantSpawn,
+        OnGameStart,
     }
 
     private void Awake() {
@@ -38,6 +39,7 @@ public class EventManager : MonoBehaviour
     }
 
     private void CreateEventPrefab() {
+        CreateEvent(eventToCreate.OnGameStart.ToString());
         CreateEvent(eventToCreate.OnPlayerDie.ToString());
         CreateEvent(eventToCreate.OnEnnemyCanSpawn.ToString());
         CreateEvent(eventToCreate.OnEnnemyCantSpawn.ToString());

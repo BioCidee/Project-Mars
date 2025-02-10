@@ -4,7 +4,9 @@ using UnityEngine;
 public class ResourceManagement : MonoBehaviour
 {
     [Header("Ressource Parameters")]
-    [SerializeField] private int oilResource;
+    [SerializeField] private int oil;
+    [SerializeField] private int maxOil;
+    private int minOil = 0;
 
     [Header("UI Parameters")]
     [SerializeField] private Ui_ResourceManager ui;
@@ -12,6 +14,7 @@ public class ResourceManagement : MonoBehaviour
     private Action produceOil;
     private enum nameEvent {
         makeOil,
+        OnGameStart,
     }
 
     private void Start() {
@@ -19,36 +22,44 @@ public class ResourceManagement : MonoBehaviour
 
         eV.CreateEvent(nameEvent.makeOil.ToString());
         eV.SubscribreToEvent(nameEvent.makeOil.ToString(), MakeOil);
-
-        InitializeGameBegening();
+        eV.SubscribreToEvent(nameEvent.makeOil.ToString(), MakeOil);
+        eV.SubscribreToEvent(nameEvent.OnGameStart.ToString(), InitializeGameBegening);
     }
 
     //Public Fonction
 
     public bool CanBuy(int price)
     {
-        bool canbuild = price <= oilResource ? true : false;
+        bool canbuild = price <= oil ? true : false;
         return canbuild;
     }
 
     public void OnObjectBuild(int _price) {
-        oilResource -= _price;
-        UpdateFuelUi();
+        oil -= _price;
+        UpdateOilUi();
     }
 
     public void MakeOil() {
-        oilResource++;
-        UpdateFuelUi();
+        oil++;
+        CheckMaxOil();
+        UpdateOilUi();
     }
 
     // Private Fonction
 
-    private void UpdateFuelUi() {
-        ui.UpdateCurrentFuel(oilResource);
+    // Oil
+    private void UpdateOilUi() {
+        ui.UpdateCurrentFuel(oil);
+    }
+
+    private void CheckMaxOil() {
+        if (oil >= maxOil) {
+            oil = maxOil;
+        }
     }
 
     private void InitializeGameBegening() {
-        oilResource += 10; 
-        UpdateFuelUi();
+        oil = 10; 
+        UpdateOilUi();
     }
 }

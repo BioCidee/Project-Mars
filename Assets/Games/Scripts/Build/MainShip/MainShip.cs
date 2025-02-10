@@ -2,27 +2,21 @@ using UnityEngine;
 
 public class MainShip : MonoBehaviour
 {
-    // Life parameters
-    private int maxLife = 100;
-    private int minLife = 0;
-    private int currentLife;
+    private enum nameOfEvent {
+        OnGameStart,
+    }
 
     private void Start() {
         OnShipIsCreate();
-        SetParameters();
-
-        EventManager.Instance.SubscribreToEvent("OnGameStart", OnGameStart);
-    }
-
-    private void SetParameters() {
-        currentLife = maxLife;
+        OnGameStart();
     }
 
     private void OnShipIsCreate() {
         GameManager.Instance.SetShipParameters(this.transform);
+        EventManager.Instance.SubscribreToEvent("OnGameStart", OnGameStart);
     }
 
     private void OnGameStart() {
-        SetParameters();
+        EventManager.Instance.TriggerEvent(nameOfEvent.OnGameStart.ToString());
     }
 }

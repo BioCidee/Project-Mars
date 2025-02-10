@@ -334,7 +334,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6343b0d3cf28c641927d393210c840d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mouseLogic: {fileID: 1182456599}
+  buildSystem: {fileID: 1182456599}
   Excavator: {fileID: 968691698374137964, guid: 3d66bedb9edf62346871d7e14e475c83, type: 3}
   Turret: {fileID: 2440525699034101803, guid: 69d17ae5b671fda418c5fa350ea5f1bb, type: 3}
   MainShip: {fileID: 1080346852581766061, guid: 7b927590541460f45a01a24169fda0ff, type: 3}
@@ -2403,6 +2403,7 @@ MonoBehaviour:
   mainCamera: {fileID: 330585545}
   cameraMoveSpeed: 1
   cameraDistance: -20
+  pointZero: {x: 0, y: 0, z: 0}
 --- !u!4 &1579933697
 Transform:
   m_ObjectHideFlags: 0

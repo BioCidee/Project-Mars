@@ -55,8 +55,6 @@ public class GameManager : MonoBehaviour
         }
 
         EventManager = EventManager.Instance;
-
-        EventManager.CreateEvent(nameOfEvent.OnGameStart.ToString());
         EventManager.SubscribreToEvent(nameOfEvent.OnPlayerDie.ToString(), GameEnd);
     }
 
