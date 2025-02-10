@@ -121,6 +121,7 @@ public class GameManager : MonoBehaviour
 
     private void GameEnd() {
         // TODO : Step Before game end
+        EventManager.Instance.ClearAllEvent(); 
         OnMainShipDie();
     }
     #endregion

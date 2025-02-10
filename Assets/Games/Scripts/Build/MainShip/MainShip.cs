@@ -13,10 +13,11 @@ public class MainShip : MonoBehaviour
 
     private void OnShipIsCreate() {
         GameManager.Instance.SetShipParameters(this.transform);
-        EventManager.Instance.SubscribreToEvent("OnGameStart", OnGameStart);
+        Debug.Log("Main Ship Create");
     }
 
     private void OnGameStart() {
         EventManager.Instance.TriggerEvent(nameOfEvent.OnGameStart.ToString());
+        Debug.Log("Main Ship Activate");
     }
 }

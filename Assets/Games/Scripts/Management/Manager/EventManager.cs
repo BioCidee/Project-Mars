@@ -78,5 +78,10 @@ public class EventManager : MonoBehaviour
             Debug.LogError($"This event disn't exist. Event name : {_nameEvent}");
 
         eventDic[_nameEvent]?.Invoke();
+        Debug.Log($"{_nameEvent} trigger !");
+    }
+
+    public void ClearAllEvent() {
+        eventDic.Clear();
     }
 }
