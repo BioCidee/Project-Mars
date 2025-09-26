@@ -16,8 +16,10 @@ public class DisplayTextSystem : MonoBehaviour
     #region SINGLETON
 
     private static DisplayTextSystem Instance;
-    public static DisplayTextSystem instance {
-        get {
+    public static DisplayTextSystem instance
+    {
+        get
+        {
             if (Instance == null)
                 Debug.LogError("Try to get TextManagement instance but is do not exist");
 
@@ -25,40 +27,49 @@ public class DisplayTextSystem : MonoBehaviour
         }
     }
 
-    private void InitializeSingleton() {
-        if (Instance != null) {
-            if (Instance != this) {
+    private void InitializeSingleton()
+    {
+        if (Instance != null)
+        {
+            if (Instance != this)
+            {
                 Destroy(this.gameObject);
             }
-        } else {
+        }
+        else
+        {
             Instance = this;
         }
     }
 
     #endregion
 
-    private void Awake() {
+    private void Awake()
+    {
         InitializeSingleton();
 
         defaultColor = paragraph.color;
         DeleteAndSetDefaultText();
     }
 
-    public void DisplayText(string _text, float delay) {
+    public void DisplayText(string _text, float delay)
+    {
         textGO.SetActive(true);
         paragraph.text = _text;
         paragraph.fontSize = defaultSize;
         StartCoroutine(TextDelay(delay));
     }
 
-    public void DisplayText(string _text, int size, float delay) {
+    public void DisplayText(string _text, int size, float delay)
+    {
         textGO.SetActive(true);
         paragraph.text = _text;
         paragraph.fontSize = size;
         StartCoroutine(TextDelay(delay));
     }
 
-    public void DisplayText(string _text, int size, float delay, Vector2 textPosition) {
+    public void DisplayText(string _text, int size, float delay, Vector2 textPosition)
+    {
         textGO.SetActive(true);
         paragraph.text = _text;
         paragraph.fontSize = size;
@@ -66,7 +77,8 @@ public class DisplayTextSystem : MonoBehaviour
         StartCoroutine(TextDelay(delay));
     }
 
-    public void DisplayTextWithColor(string _text, int size, float delay, Color _myColor) {
+    public void DisplayTextWithColor(string _text, int size, float delay, Color _myColor)
+    {
         textGO.SetActive(true);
         paragraph.text = _text;
         paragraph.fontSize = size;
@@ -74,14 +86,16 @@ public class DisplayTextSystem : MonoBehaviour
         StartCoroutine(TextDelay(delay));
     }
 
-    public void DisplayTextWithColor(string _text, float delay, Color _myColor) {
+    public void DisplayTextWithColor(string _text, float delay, Color _myColor)
+    {
         textGO.SetActive(true);
         paragraph.text = _text;
         paragraph.color = _myColor;
         StartCoroutine(TextDelay(delay));
     }
 
-    public void DisplayTextWithColor(string _text, int size, float delay, Vector2 textPosition, Color _myColor) {
+    public void DisplayTextWithColor(string _text, int size, float delay, Vector2 textPosition, Color _myColor)
+    {
         textGO.SetActive(true);
         paragraph.text = _text;
         paragraph.fontSize = size;
@@ -90,7 +104,8 @@ public class DisplayTextSystem : MonoBehaviour
         StartCoroutine(TextDelay(delay));
     }
 
-    private void DeleteAndSetDefaultText() {
+    private void DeleteAndSetDefaultText()
+    {
         textGO.transform.position = defaultTransform.position;
         paragraph.text = null;
         isAnyTextDisplay = false;
@@ -98,12 +113,14 @@ public class DisplayTextSystem : MonoBehaviour
         textGO.SetActive(false);
     }
 
-    private IEnumerator TextDelay(float delay) {
+    private IEnumerator TextDelay(float delay)
+    {
         float elapsedTime = delay;
         Color color = paragraph.color;
         yield return new WaitForSeconds(delay);
 
-        while (elapsedTime > 0) {
+        while (elapsedTime > 0)
+        {
             yield return new WaitForSeconds(0.01f);
             elapsedTime -= 0.01f;
 
