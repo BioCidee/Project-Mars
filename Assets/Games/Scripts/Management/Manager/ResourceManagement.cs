@@ -3,12 +3,12 @@ using UnityEngine;
 
 public class ResourceManagement : MonoBehaviour
 {
-    [Header("Ressource Parameters")]
+    [Header("---- Ressource Parameters ----")]
     [SerializeField] private int oil;
     [SerializeField] private int maxOil;
     private int minOil = 0;
 
-    [Header("UI Parameters")]
+    [Header("---- UI Parameters ----")]
     [SerializeField] private Ui_ResourceManager ui;
 
     private Action produceOil;
@@ -26,8 +26,6 @@ public class ResourceManagement : MonoBehaviour
         eV.SubscribreToEvent(nameEvent.OnGameStart.ToString(), InitializeGameBegening);
     }
 
-    //Public Fonction
-
     public bool CanBuy(int price)
     {
         bool canbuild = price <= oil ? true : false;
@@ -44,8 +42,6 @@ public class ResourceManagement : MonoBehaviour
         CheckMaxOil();
         UpdateOilUi();
     }
-
-    // Private Fonction
 
     // Oil
     private void UpdateOilUi() {

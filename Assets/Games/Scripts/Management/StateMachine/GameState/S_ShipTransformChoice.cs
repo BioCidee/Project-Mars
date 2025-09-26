@@ -8,14 +8,16 @@ public class S_ShipTransformChoice : BasicState
 
     private SM_Game myCurrentSM;
 
-    private GameManager GameManager;
-    private bool isShipSet;
-    private bool isStepComplete;
+    [Header("---- State Parameters ----")]
+    [SerializeField] private GameManager GameManager;
+    [SerializeField] private bool isShipSet;
+    [SerializeField] private bool isStepComplete;
 
     // Text Display Parameters
-    private string messageForSetMainShip = "Please ! Set your MainShip for launch the game !";
-    private int textSize = 80;
-    private float textDelay = 4;
+    [Header("---- Text Display Parameters ----")]
+    [SerializeField] private string messageForSetMainShip = "Please ! Set your MainShip for launch the game !";
+    [SerializeField]  private int textSize = 80;
+    [SerializeField]  private float textDelay = 4;
 
     public override void OnStart() {
         myCurrentSM = (SM_Game)myStateMachine;  

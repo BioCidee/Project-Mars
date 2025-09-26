@@ -13,7 +13,8 @@ public class MiningResource : MonoBehaviour
     }
 
     private IEnumerator Mining() {
-        while(isMining == true) {
+        while (isMining == true)
+        {
             yield return new WaitForSeconds(timerToProduce);
             ProduceResource();
         }
