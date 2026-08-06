@@ -28,6 +28,7 @@ public class EventManager : MonoBehaviour
 
     private enum eventToCreate {
         OnPlayerDie,
+        OnEnnemyDie,
         OnEnnemyCanSpawn,
         OnEnnemyCantSpawn,
         OnGameStart,
@@ -41,6 +42,7 @@ public class EventManager : MonoBehaviour
     private void CreateEventPrefab() {
         CreateEvent(eventToCreate.OnGameStart.ToString());
         CreateEvent(eventToCreate.OnPlayerDie.ToString());
+        CreateEvent(eventToCreate.OnEnnemyDie.ToString());
         CreateEvent(eventToCreate.OnEnnemyCanSpawn.ToString());
         CreateEvent(eventToCreate.OnEnnemyCantSpawn.ToString());
     }

@@ -1,4 +1,3 @@
-using System.Collections;
 using UnityEngine;
 
 public class S_Begining : BasicState
@@ -13,7 +12,7 @@ public class S_Begining : BasicState
     [Header("---- Begenin Parameters ----s")]
     [SerializeField] private float noll;
     [SerializeField] private bool isStateEnd = false;
-    [SerializeField] private float duration = 5;
+    [SerializeField] private float duration = 60;
     private float timer;
 
     public override void OnStart()

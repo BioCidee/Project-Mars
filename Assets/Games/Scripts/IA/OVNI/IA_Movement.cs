@@ -1,24 +1,25 @@
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Events;
 
 public class IA_Movement : MonoBehaviour
 {
     // System
+    [Header("---- System Parameters ----")]
     [SerializeField] private IA_DetectionSystem _detectionSystem;
-    private Transform mainShipTransform;
-    private GameManager gameManager;
+    [SerializeField] private Transform mainShipTransform;
+    [SerializeField] private GameManager gameManager;
 
     // Targets
-    private GameObject target;
-    private List<GameObject> listTarget;
+    [Header("---- Target ----")]
+    [SerializeField] private GameObject target;
+    [SerializeField] private List<GameObject> listTarget;
 
     // Movement Parameters
     [Header("Movement Parameters")]
     [SerializeField] private int stopDistance;
     [SerializeField] private int moveSpeed;
     [SerializeField] private float fixedHeight;
-    private bool isReadyToFire = false;
+    [SerializeField] private bool isReadyToFire = false;
 
     private void Start() {
         gameManager = GameManager.Instance;

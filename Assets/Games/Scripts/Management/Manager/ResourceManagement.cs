@@ -22,7 +22,6 @@ public class ResourceManagement : MonoBehaviour
 
         eV.CreateEvent(nameEvent.makeOil.ToString());
         eV.SubscribreToEvent(nameEvent.makeOil.ToString(), MakeOil);
-        eV.SubscribreToEvent(nameEvent.makeOil.ToString(), MakeOil);
         eV.SubscribreToEvent(nameEvent.OnGameStart.ToString(), InitializeGameBegening);
     }
 

@@ -26,7 +26,7 @@ public class BuildSystem : MonoBehaviour
     private void Update() {
         GetBlocAim();
 
-        if (lastGameObjectHit != null )
+        if (lastGameObjectHit != null)
             if (Input.GetMouseButtonDown(0) && isOnConstructionMode) {
                 if (objectToBuild == null) {
                     Debug.LogError("Construction mode activate, but no building to build");

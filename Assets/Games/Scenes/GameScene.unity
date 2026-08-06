@@ -179,6 +179,9 @@ MonoBehaviour:
   groundParent: {fileID: 198656274}
   ground: {fileID: 9188191569707869362, guid: 035ef9aecc7f90e4b93b20c7cbf4af69, type: 3}
   groundMining: {fileID: 3771438727758540059, guid: adc5eb16d51dbb34296949da8445ca58, type: 3}
+  listPrefabGrounds:
+  - {fileID: 9188191569707869362, guid: 035ef9aecc7f90e4b93b20c7cbf4af69, type: 3}
+  - {fileID: 8791839205114025700, guid: b5a5171a438ac6148b7c5c9a1a69d386, type: 3}
   maxChance: 500
 --- !u!1 &83096734
 GameObject:
@@ -1895,7 +1898,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   oil: 0
-  maxOil: 1000
+  maxOil: 100
   ui: {fileID: 359914298}
 --- !u!114 &1182456601
 MonoBehaviour:
@@ -1938,7 +1941,6 @@ MonoBehaviour:
   spawnRate: 5
   ennemyList:
   - {fileID: 29995859541088855, guid: 19b57a2de5da83a4da6407cc05faab1e, type: 3}
-  - {fileID: 4090092554498448924, guid: 475fd10bee08a1a439a43e0ae3116678, type: 3}
   altitude: 8
   spawnPointList:
   - {fileID: 921332592}

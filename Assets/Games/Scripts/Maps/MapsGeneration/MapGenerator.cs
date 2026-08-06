@@ -20,11 +20,12 @@ public class MapGenerator : MonoBehaviour
     [SerializeField] private GameObject groundParent;
     [SerializeField] private GameObject ground;
     [SerializeField] private GameObject groundMining;
+    [SerializeField] private List<GameObject> listPrefabGrounds = new List<GameObject>();
 
     [Header("Spacial Block Generation")]
     [SerializeField] private int maxChance;
 
-    private List<GameObject> groundList = new List<GameObject>();
+    private List<GameObject> groundListNumber = new List<GameObject>();
 
     private void Start() {
         GameManager.Instance.SetMapParameters(width, length);
@@ -36,7 +37,7 @@ public class MapGenerator : MonoBehaviour
         minableBlockCount = 0;
         float mapSeed = (customSeed > 0) ? customSeed : Random.Range(0f, 5000f);
 
-        if (groundList.Count > 0) {
+        if (groundListNumber.Count > 0) {
             ClearCurrentGroundList();
         }
 
@@ -50,19 +51,21 @@ public class MapGenerator : MonoBehaviour
     }
 
     private void ClearCurrentGroundList() {
-        foreach (GameObject go in groundList) {
+        foreach (GameObject go in groundListNumber) {
             Destroy(go);
         }
 
         minableBlockCount = 0;
-        groundList.Clear();
+        groundListNumber.Clear();
     }
 
     private GameObject GenerateBase(int w, int l) {
-        GameObject newGround = Instantiate(ground);
+        GameObject nextground = listPrefabGrounds[Random.Range(0, listPrefabGrounds.Count)];
+
+        GameObject newGround = Instantiate(nextground);
         newGround.transform.parent = groundParent.transform;
         newGround.transform.position = new Vector3((1 * w) + offset, 0, (1 * l) + offset);
-        groundList.Add(newGround);
+        groundListNumber.Add(newGround);
 
         return newGround;
     }
@@ -73,7 +76,7 @@ public class MapGenerator : MonoBehaviour
         height--;
 
         for (int h = 0; h < height; h++) {
-            GameObject go = ground;
+            GameObject go = listPrefabGrounds[Random.Range(0, listPrefabGrounds.Count)]; ;
 
               if (h + 1 >= height && minableBlockCount < maxMinableBlockCount) {
                 int chance = Random.Range(0, maxChance); // Chance for spawn
@@ -87,7 +90,7 @@ public class MapGenerator : MonoBehaviour
             GameObject newGroundHeight = Instantiate(go);
             newGroundHeight.transform.parent = currentGround.transform;
             newGroundHeight.transform.position = new Vector3((1 * w) + offset, ((1 * h) + 1) + offset, (1 * l) + offset);
-            groundList.Add(newGroundHeight);
+            groundListNumber.Add(newGroundHeight);
         }
     }
 }
