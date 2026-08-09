@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class S_Begining : BasicState
@@ -17,7 +18,7 @@ public class S_Begining : BasicState
 
     public override void OnStart()
     {
-
+        isStateEnd = false;
     }
 
     public override void OnLogicUpdate()

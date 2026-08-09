@@ -5,7 +5,6 @@ public class S_EnnemyWave : BasicState
 {
     public S_EnnemyWave(string _name, string _description, StateMachine _stateMachine) : base(_name, _description, _stateMachine)
     {
-
         eventManager = EventManager.Instance;
     }
 

@@ -5,6 +5,11 @@ public class GameManager : MonoBehaviour
 {
     // System
     private EventManager EventManager;
+    public IASpawnManager spawnManager;
+
+    [Header("---- Wave Parameters ----")]
+    [SerializeField] private int currentWave;
+    [SerializeField] private int numberEnnemySpawn;
 
     // Ship
     private Transform shipTransform;
@@ -97,11 +102,6 @@ public class GameManager : MonoBehaviour
         _length = length;
     }
     #endregion
-
-    public void StartEnnemySpawn() {
-        EventManager.TriggerEvent("OnEnnemyCanSpawn");
-        Debug.Log("TRIGGER EVENT ENNEMY SPAWN");
-    }
 
     #region GameCommand
     private void StartGame() {
