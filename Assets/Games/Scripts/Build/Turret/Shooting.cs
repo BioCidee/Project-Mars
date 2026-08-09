@@ -27,8 +27,6 @@ public class Shooting : MonoBehaviour
         GameObject newBullet = Instantiate(bullet);
         newBullet.transform.position = shootPosition.transform.position;
         newBullet.transform.rotation = shootPosition.transform.rotation;
-
-        //BulletLogic bLogic = newBullet.GetComponent<BulletLogic>();
     }
 
     private void ShootSystem() {

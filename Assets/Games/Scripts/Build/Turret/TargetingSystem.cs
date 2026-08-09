@@ -11,6 +11,9 @@ public class TargetingSystem : MonoBehaviour
     [Header("---- Turret Part ----")]
     [SerializeField] private Transform Cannon;
 
+    [Header("---- Turret Guidance ----")]
+    [SerializeField] private float offset;
+
     [Header("---- Turret Parameters ----")]
     [SerializeField] private int speedRotation;
     [SerializeField] private float angleTolerated;
@@ -29,7 +32,7 @@ public class TargetingSystem : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if (Toolbox.LayerCheck.CheckIfLayer(ennemyLayer, other.gameObject)) { // LayerMask 7 = Ennemy
-            Debug.Log("Object Enter : " + other.gameObject.name);
+            //Debug.Log("Object Enter : " + other.gameObject.name);
             target = other.gameObject;
         }
     }
@@ -37,9 +40,9 @@ public class TargetingSystem : MonoBehaviour
     private void Rotation() 
     {
         Vector3 direction = (target.transform.position - Cannon.position).normalized;
-        Quaternion newRotation = Quaternion.LookRotation(direction);
+        Quaternion newRotation = Quaternion.LookRotation(new Vector3(direction.x + offset, direction.y, direction.z + offset));
 
-        Cannon.rotation = Quaternion.RotateTowards(Cannon.rotation, newRotation, speedRotation * Time.deltaTime);
+        Cannon.rotation = Quaternion.RotateTowards(Cannon.rotation,newRotation, speedRotation * Time.deltaTime);
 
         float angleDif = Quaternion.Angle(Cannon.rotation, newRotation);
 
