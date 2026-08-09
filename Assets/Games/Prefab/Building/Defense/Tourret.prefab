@@ -106,6 +106,7 @@ GameObject:
   - component: {fileID: 881821924884458000}
   - component: {fileID: 6996979248645955334}
   - component: {fileID: 410373823710508187}
+  - component: {fileID: 6628269675793114902}
   - component: {fileID: 4667167908998542236}
   - component: {fileID: 3662135991450029996}
   m_Layer: 8
@@ -141,10 +142,10 @@ Rigidbody:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2440525699034101803}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
   m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
@@ -182,6 +183,20 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1.7961564, z: 1}
   m_Center: {x: 0, y: 0.8980782, z: 0}
+--- !u!114 &6628269675793114902
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2440525699034101803}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2be3c7396e87b114e83a1d7b26dca703, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Life
+  maxLife: 100
+  currentLife: 0
 --- !u!114 &4667167908998542236
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -283,8 +298,8 @@ MonoBehaviour:
   ennemyLayer:
     serializedVersion: 2
     m_Bits: 128
-  Cannon: {fileID: 7168223919605779167}
   target: {fileID: 0}
+  Cannon: {fileID: 7168223919605779167}
   speedRotation: 24
   angleTolerated: 3
 --- !u!1 &5505003180039581082
@@ -348,6 +363,8 @@ MeshRenderer:
   m_RayTracingAccelStructBuildFlagsOverride: 0
   m_RayTracingAccelStructBuildFlags: 1
   m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -369,9 +386,11 @@ MeshRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1 &6793031647026574889
 GameObject:
@@ -434,6 +453,8 @@ MeshRenderer:
   m_RayTracingAccelStructBuildFlagsOverride: 0
   m_RayTracingAccelStructBuildFlags: 1
   m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -455,9 +476,11 @@ MeshRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1001 &1508656641187894368
 PrefabInstance:

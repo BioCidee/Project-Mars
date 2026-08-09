@@ -6,7 +6,7 @@ public class Bombing : MonoBehaviour
     // Parameters
     [SerializeField] private IA_Movement movement;
 
-    [Header("Bombing Parameters")]
+    [Header("---- Bombing Parameters ----")]
     [SerializeField] private GameObject bomb;
     [SerializeField] private Transform dropPosition;
     [SerializeField] private float timeBetweenStrikes;
@@ -15,10 +15,6 @@ public class Bombing : MonoBehaviour
 
     // IDEA FOR ADD
     // - Make number bomb drop on a variable
-
-    private void Start() {
-       
-    }
 
     private void Update() {
         if (readyToStrike) {
@@ -31,11 +27,11 @@ public class Bombing : MonoBehaviour
     }
 
     private void TimerForStrike() {
-        if (strikeTimer > 0) {
-            strikeTimer -= Time.deltaTime;
-        } else {
+        if (strikeTimer <= 0) {
             strikeTimer = timeBetweenStrikes;
             DropBomb();
+        } else {
+            strikeTimer -= Time.deltaTime;
         }
     }
 

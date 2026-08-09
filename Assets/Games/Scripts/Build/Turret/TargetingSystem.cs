@@ -1,31 +1,21 @@
 using UnityEngine;
+using Toolbox;
 
 public class TargetingSystem : MonoBehaviour
 {
     // Targeting system
+    [Header("---- Target Parameters ----")]
     [SerializeField] private LayerMask ennemyLayer;
-    [SerializeField] private Transform Cannon;
     [SerializeField] private GameObject target;
+
+    [Header("---- Turret Part ----")]
+    [SerializeField] private Transform Cannon;
+
+    [Header("---- Turret Parameters ----")]
     [SerializeField] private int speedRotation;
     [SerializeField] private float angleTolerated;
-    private Vector3 targetPosition;
-    private bool isAnyTarget;
+
     private bool isTargetingReady;
-    private BoxCollider Collider;
-
-    private void Start()
-    {
-        Collider = GetComponent<BoxCollider>();
-
-        if(Collider == null)
-        {
-            Debug.Log("there is no collider !");
-        }
-        else
-        {
-            Debug.Log(Collider);
-        }
-    }
 
     private void Update()
     {
@@ -36,22 +26,9 @@ public class TargetingSystem : MonoBehaviour
         }
     }
 
-    private void OnTriggerExit(Collider other)
-    {
-        // Les ennemis ont tendance à sortir visiblement trop facilement de la zonne de detection et donc ne sont plus en target, limitant le jeu 
-        // a vérifier ou améliorer si possible.
-
-        /*if (target = other.gameObject) { // LayerMask 7 = Ennemy
-            Debug.Log("Object Enter : " + other.gameObject.name);
-            target = null;
-        }*/
-    }
-
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log(other.gameObject.layer);
-
-        if (other.gameObject.layer == 7) { // LayerMask 7 = Ennemy
+        if (Toolbox.LayerCheck.CheckIfLayer(ennemyLayer, other.gameObject)) { // LayerMask 7 = Ennemy
             Debug.Log("Object Enter : " + other.gameObject.name);
             target = other.gameObject;
         }
