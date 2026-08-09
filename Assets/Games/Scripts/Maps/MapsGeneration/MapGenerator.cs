@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class MapGenerator : MonoBehaviour
 {
-    [Header("Map Generation Parameters")]
+    [Header("---- Map Generation Parameters ----")]
     [SerializeField] private int customSeed = 0;
     [SerializeField] private int length;
     [SerializeField] private int width;
@@ -16,13 +16,13 @@ public class MapGenerator : MonoBehaviour
     [SerializeField] private float scale = 0.1f;
     [SerializeField] private int maxHeight;
 
-    [Header("Block for map")]
+    [Header("---- Block for map ----")]
     [SerializeField] private GameObject groundParent;
     [SerializeField] private GameObject ground;
     [SerializeField] private GameObject groundMining;
     [SerializeField] private List<GameObject> listPrefabGrounds = new List<GameObject>();
 
-    [Header("Spacial Block Generation")]
+    [Header("---- Spacial Block Generation ----")]
     [SerializeField] private int maxChance;
 
     private List<GameObject> groundListNumber = new List<GameObject>();

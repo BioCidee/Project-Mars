@@ -8,9 +8,11 @@ public class Ui_BuildManager : MonoBehaviour
     [SerializeField] private GameObject Excavator;
     [SerializeField] private GameObject Turret;
     [SerializeField] private GameObject MainShip;
+    [SerializeField] private GameObject shield;
 
     private int excavaTorPrice = 10;
     private int turretPrice = 20;
+    private int shieldPrice = 0;
 
     public void BuildExcavator() {
         buildSystem.GetBuilding(Excavator, excavaTorPrice);
@@ -23,5 +25,9 @@ public class Ui_BuildManager : MonoBehaviour
 
     public void BuildMainShip() {
         buildSystem.GetShipBuilding(MainShip);
+    }
+    
+    public void BuildShield() {
+        buildSystem.GetBuilding(shield, shieldPrice);
     }
 }

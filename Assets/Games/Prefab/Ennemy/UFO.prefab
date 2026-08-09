@@ -67,10 +67,10 @@ Rigidbody:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 29995859541088855}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
   m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
@@ -100,9 +100,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _detectionSystem: {fileID: 6071326081791589053}
+  mainShipTransform: {fileID: 0}
+  gameManager: {fileID: 0}
+  target: {fileID: 0}
+  listTarget: []
   stopDistance: 1
   moveSpeed: 2
   fixedHeight: 8.5
+  isReadyToFire: 0
 --- !u!114 &3357023854849548320
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -130,7 +135,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movement: {fileID: 2807066417666923895}
-  bomb: {fileID: 4688931024133864527, guid: 7ff40a0a49e58394787375dd6e348f86, type: 3}
+  bomb: {fileID: 6821124183194756505, guid: 389b2a87d05b6b441813899ada4b3816, type: 3}
   dropPosition: {fileID: 8054419707297474850}
   timeBetweenStrikes: 3
   readyToStrike: 0
@@ -298,6 +303,8 @@ MeshRenderer:
   m_RayTracingAccelStructBuildFlagsOverride: 0
   m_RayTracingAccelStructBuildFlags: 1
   m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -319,9 +326,11 @@ MeshRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1 &8893106851488247310
 GameObject:

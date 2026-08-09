@@ -23,5 +23,7 @@ public class GroundAnimation : MonoBehaviour
         }
 
         transform.localScale = Vector3.one;   
+
+        this.enabled = false;
     }
 }

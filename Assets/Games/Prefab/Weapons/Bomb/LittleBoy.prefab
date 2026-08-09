@@ -10,27 +10,27 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3082380325943917695, guid: 389b2a87d05b6b441813899ada4b3816, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.2
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 3082380325943917695, guid: 389b2a87d05b6b441813899ada4b3816, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.2
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 3082380325943917695, guid: 389b2a87d05b6b441813899ada4b3816, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.2
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 3082380325943917695, guid: 389b2a87d05b6b441813899ada4b3816, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 12.985377
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3082380325943917695, guid: 389b2a87d05b6b441813899ada4b3816, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 7.9176297
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3082380325943917695, guid: 389b2a87d05b6b441813899ada4b3816, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 13.1094885
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3082380325943917695, guid: 389b2a87d05b6b441813899ada4b3816, type: 3}
       propertyPath: m_LocalRotation.w
@@ -60,13 +60,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3082380325943917695, guid: 389b2a87d05b6b441813899ada4b3816, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6821124183194756505, guid: 389b2a87d05b6b441813899ada4b3816, type: 3}
       propertyPath: m_Name
       value: LittleBoy
       objectReference: {fileID: 0}
     - target: {fileID: 7265266664740086969, guid: 389b2a87d05b6b441813899ada4b3816, type: 3}
       propertyPath: explosionRadius
-      value: 3
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

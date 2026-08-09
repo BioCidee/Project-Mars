@@ -6,7 +6,6 @@ public class ResourceManagement : MonoBehaviour
     [Header("---- Ressource Parameters ----")]
     [SerializeField] private int oil;
     [SerializeField] private int maxOil;
-    private int minOil = 0;
 
     [Header("---- UI Parameters ----")]
     [SerializeField] private Ui_ResourceManager ui;

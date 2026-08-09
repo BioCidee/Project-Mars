@@ -3,6 +3,7 @@ using UnityEngine;
 public class BuildSystem : MonoBehaviour
 {
     //System
+    [Header("---- System ----")]
     [SerializeField] private ResourceManagement rM;
 
     // Mouse Parameters
@@ -12,12 +13,15 @@ public class BuildSystem : MonoBehaviour
     private Color lastColor;
 
     //Build Parameters
+    [Header("---- Build Parameters ----")]
     [SerializeField] private GameObject objectToBuild;
     [SerializeField] private LayerMask constructionLayer;
-    private GameObject lastGameObjectHit = null;
+    [SerializeField] private GameObject lastGameObjectHit = null;
     private GameObject currentGameObject = null;
-    private int priceObjToBuild;
-    private bool isOnConstructionMode = false;
+
+    [Header("---- Next Build ----")]
+    [SerializeField] private int priceObjToBuild;
+    [SerializeField] private bool isOnConstructionMode = false;
 
     // Main Ship
     private bool isNextBuildIsShip = false;
