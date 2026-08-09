@@ -36,11 +36,19 @@ public class ShieldGenerator : MonoBehaviour
     }
 
     private IEnumerator GenerateShield() {
+        Debug.Log("Start Generate Shield");
         if (!isShieldGenerated) {
             if(isShieldCanBeGenerated) {
+                Debug.Log("ShieldGenerator : Start Coroutine");
                 yield return new WaitForSeconds(timeToGenerate);
+                Debug.Log("ShieldGenerator : End Coroutine");
+
+                if (shield == null) Debug.LogError("Shield Generator didnt have any shield to generate !");
+
                 GameObject NewShield = Instantiate(shield, shieldTransform);
                 isShieldGenerated = true;
+
+                Debug.Log("Shield generate");
             }  
         }
     }
