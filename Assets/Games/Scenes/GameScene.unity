@@ -2023,13 +2023,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rM: {fileID: 1182456600}
+  ui_buildManager: {fileID: 0}
   objectToBuild: {fileID: 1234130309769658990, guid: 62a00ad508660bb4a9268d4b72c6e213, type: 3}
   constructionLayer:
     serializedVersion: 2
     m_Bits: 72
   lastGameObjectHit: {fileID: 0}
+  buildList:
+  - {fileID: 11400000, guid: 32c7aaa1a94468348bb9518b84da531e, type: 2}
+  - {fileID: 11400000, guid: a52ca23fbb011454ea5e22ce052f6069, type: 2}
+  - {fileID: 11400000, guid: cd3dfd91681876746bacba154e212723, type: 2}
+  - {fileID: 11400000, guid: d9f917623cd8cf1448836b39432bb3cb, type: 2}
   priceObjToBuild: 0
   isOnConstructionMode: 0
+  mainShip: {fileID: 0}
+  isNextBuildIsShip: 0
+  isMainShipIsBuild: 0
 --- !u!114 &1182456600
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2069,6 +2078,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd6995621c29c90488bc2231dab7b8be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spawnManager: {fileID: 0}
+  currentWave: 0
+  numberEnnemySpawn: 0
 --- !u!114 &1182456603
 MonoBehaviour:
   m_ObjectHideFlags: 0

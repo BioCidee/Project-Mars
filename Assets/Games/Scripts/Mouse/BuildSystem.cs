@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class BuildSystem : MonoBehaviour
@@ -5,12 +6,10 @@ public class BuildSystem : MonoBehaviour
     //System
     [Header("---- System ----")]
     [SerializeField] private ResourceManagement rM;
-
-    // Mouse Parameters
-    private Vector2 mousePosition;
+    [SerializeField] private Ui_BuildManager ui_buildManager;
 
     // HilghLight Parameters
-    private Color lastColor;
+    private Color overallColor;
 
     //Build Parameters
     [Header("---- Build Parameters ----")]
@@ -19,13 +18,18 @@ public class BuildSystem : MonoBehaviour
     [SerializeField] private GameObject lastGameObjectHit = null;
     private GameObject currentGameObject = null;
 
+    [Header("---- List Of Build ----")]
+    [SerializeField] private List<SO_Build> buildList = new List<SO_Build>();
+
     [Header("---- Next Build ----")]
     [SerializeField] private int priceObjToBuild;
     [SerializeField] private bool isOnConstructionMode = false;
 
     // Main Ship
-    private bool isNextBuildIsShip = false;
-    private bool isMainShipIsBuild = false;
+    [Header("---- Main Ship ----")]
+    [SerializeField] private SO_Build mainShip;
+    [SerializeField] private bool isNextBuildIsShip = false;
+    [SerializeField] private bool isMainShipIsBuild = false;
 
     private void Update() {
         GetBlocAim();
@@ -63,35 +67,13 @@ public class BuildSystem : MonoBehaviour
         }
     }
 
-    public void BuildMainShip() {
-        if (currentGameObject != null) {
-
-            GroundLogic gL = currentGameObject.GetComponent<GroundLogic>();
-
-            if (gL != null) {
-                if (gL.IsGroundFree() == true) {
-                        if (!GameManager.Instance.ReturnMainShipStatue()) { // Check if MainShip didnt already exist
-                            gL.SetObjectOnTop(objectToBuild);
-                            isMainShipIsBuild = true;
-                            RemoveHighlight();
-                        } else {
-                            isOnConstructionMode = false;
-                            objectToBuild = null;
-                        }
-                } else {
-                    isOnConstructionMode = true;
-                }
-            }
-        }
-    }
-
     private void BuildObject() {
         if (currentGameObject != null) {
 
             GroundLogic gL = currentGameObject.GetComponent<GroundLogic>();
 
             if (gL != null) {
-                if (gL.IsGroundFree() == true){
+                if (gL.IsGroundFree()){
                     if (rM.CanBuy(priceObjToBuild)){
                         gL.SetObjectOnTop(objectToBuild);
                         rM.OnObjectBuild(priceObjToBuild);
@@ -106,18 +88,46 @@ public class BuildSystem : MonoBehaviour
         }
     }
 
+    public List<SO_Build> ReturnBuildList() {
+        return buildList;
+    }
+
+    // Ground HightLight 
     private void HighLight(GameObject blocHit) {
         Renderer renderer = currentGameObject.GetComponentInChildren<Renderer>();
-        lastColor = renderer.material.color;
+        overallColor = renderer.material.color;
         renderer.material.color = Color.red;
         lastGameObjectHit = currentGameObject;
     }
-
     private void RemoveHighlight() {
         if (lastGameObjectHit != null) {
             Renderer renderer = lastGameObjectHit.GetComponentInChildren<Renderer>();
-            renderer.material.color = lastColor;
+            renderer.material.color = overallColor;
             lastGameObjectHit = null;
+        }
+    }
+
+
+    // Main Ship Controller
+    public void BuildMainShip() {
+        if (currentGameObject != null) {
+
+            GroundLogic gL = currentGameObject.GetComponent<GroundLogic>();
+
+            if (gL != null) {
+                if (gL.IsGroundFree() == true) {
+                    if (!GameManager.Instance.ReturnMainShipStatue()) { // Check if MainShip didnt already exist
+                        gL.SetObjectOnTop(objectToBuild);
+                        isMainShipIsBuild = true;
+                        RemoveHighlight();
+                    } else {
+                        isOnConstructionMode = false;
+                        objectToBuild = null;
+                    }
+                } else {
+                    isOnConstructionMode = true;
+                }
+            }
         }
     }
 
